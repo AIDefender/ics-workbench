@@ -5,8 +5,8 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   ll res = 0; // Initialize result 
   a = a % m; 
   printf("%ld\n",a+m);
-  printf("%lld\n",a/m);
-  printf("%lld\n",a);
+  printf("%ld\n",a/m);
+  printf("%ld\n",a);
   while (b > 0) 
   { 
       // If b is odd, add 'a' to result 
