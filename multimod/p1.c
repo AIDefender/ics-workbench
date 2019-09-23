@@ -1,4 +1,5 @@
 #include "multimod.h"
+#include <stdio.h>
 #define ll int64_t
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   ll res = 0; // Initialize result 
