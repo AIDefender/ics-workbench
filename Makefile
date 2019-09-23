@@ -17,5 +17,5 @@ $(NAME)-64: $(DEPS) # 64bit binary
 	gcc -m64 $(CFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(NAME)-64
 
