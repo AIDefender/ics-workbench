@@ -2,11 +2,14 @@
 #include <stdio.h>
 #define ll int64_t
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
+  a = (int) a;
+  b = (int) b;
+  m = (int) m;
   ll res = 0; // Initialize result 
   a = a % m; 
-  printf("%ld\n",a);
-  printf("%ld\n",a+m);
-  printf("%ld\n",a/m);
+  printf("%d\n",a);
+  printf("%d\n",a+m);
+  printf("%d\n",a/m);
   while (b > 0) 
   { 
       // If b is odd, add 'a' to result 
