@@ -3,8 +3,10 @@
 #define ll int64_t
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
-  int32_t a1=a&18446744069414584320 >> 32;
-  int32_t b1=b&18446744069414584320 >> 32;
+  int64_t a1=a&18446744069414584320 >> 32;
+  a1 = (int) a1;
+  int64_t b1=b&18446744069414584320 >> 32;
+  b1 = (int) b1;
   int32_t a2=(int) a;
   int32_t b2=(int) b;
 
