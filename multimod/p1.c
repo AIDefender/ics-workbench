@@ -5,7 +5,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
   a=(int) a;
   b=(int) b;
-  c=(int) m;
+  m=(int) m;
 
   int res=0;
   
