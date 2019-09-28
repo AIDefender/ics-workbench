@@ -4,6 +4,8 @@
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
   (int) a,b,m;
+
+  int res;
   
   while (b > 0) 
   { 
