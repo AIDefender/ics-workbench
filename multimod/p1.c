@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define ll int64_t
 
-int32_t int_mod(int32_t a, int32_t b, int32_t m);
+int32_t int_mod(int32_t a, int32_t b, int64_t m);
 
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
@@ -15,10 +15,10 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int32_t m2=(int32_t) m;
   printf("%d %d %d\n",a2,b2,m2);
 
-  return int_mod(a2,b2,m2);
+  return int_mod(a2,b2,m);
 }
 
-int32_t int_mod(int32_t a, int32_t b, int32_t m){
+int32_t int_mod(int32_t a, int32_t b, int64_t m){
 
   int res=0;
   
