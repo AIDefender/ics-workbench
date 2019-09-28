@@ -6,16 +6,18 @@ int32_t int_mod(int32_t a, int32_t b, int64_t m);
 
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
-  int a1=a&18446744069414584320u >> 32;
-  int b1=b&18446744069414584320u >> 32;
-  printf("%d %d",a1,b1);
-  int32_t a2=(int) a;
-  int32_t b2=(int) b;
+  // int64_t f = 0xffffffff;
 
-  return int_mod(a2,b2,m);
+  // int a1=a&18446744069414584320u >> 32;
+  // int b1=b&18446744069414584320u >> 32;
+  // printf("%d %d\n",a1,b1);
+  // int32_t a2=(int) a;
+  // int32_t b2=(int) b;
+
+  return int_mod(a,b,m);
 }
 
-int32_t int_mod(int32_t a, int32_t b, int64_t m){
+int32_t int_mod(int64_t a, int64_t b, int64_t m){
 
   int res=0;
   
