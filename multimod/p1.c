@@ -16,6 +16,8 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
   int32_t m_2 = 1 << 32 % m;
 
+  printf("%d %d %d %d %d \n",a1_m,b1_m,a2_m,b2_m,m_2);
+
   int32_t res = (m_2 * m_2 * a1_m * b1_m)% m  + m_2*(a1_m*b2_m+a2_m*b1_m)%m + a2_m*b2_m%m;
   
   return res;
