@@ -8,7 +8,16 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   uint32_t b2 = b&f;
   int32_t a1 = a>>32;
   int32_t b1 = b>>32;
-  printf("%d %d %u %u\n",a1,b1,a2,b2);
-  return 0;
+
+  int32_t a1_m = a1 % m;
+  int32_t b1_m = b1 % m;
+  int32_t a2_m = a2 % m;
+  int32_t b2_m = b2 % m;
+
+  int32_t m_2 = 1 << 32 % m;
+
+  int32_t res = (m_2 * m_2 * a1_m * b1_m)% m  + m_2*(a1_m*b2_m+a2_m*b1_m)%m + a2_m*b2_m%m;
+  
+  return res;
 }
 
