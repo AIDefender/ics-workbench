@@ -14,7 +14,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int32_t a2_m = a2 % m;
   int32_t b2_m = b2 % m;
 
-  int64_t m_2 = 1 << 32 % m;
+  int64_t m_2 = (1 << 32) % m;
 
   printf("%d %d %d %d %ld \n",a1_m,b1_m,a2_m,b2_m,m_2);
 
