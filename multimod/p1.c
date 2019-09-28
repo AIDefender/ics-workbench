@@ -24,7 +24,7 @@ int64_t int_mod(int64_t a, int64_t b, int64_t m){
   if (m==2)
   {
     printf("%ld %ld\n",a&1,b&1);
-    return !((a&1)&&(b&1));
+    return (a&1)&&(b&1);
   } 
     
   
