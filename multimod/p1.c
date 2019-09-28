@@ -29,7 +29,7 @@ int32_t int_mod(int32_t a, int32_t b, int32_t m){
           res = (res + a) % m; 
 
       // Multiply 'a' with 2 
-      a = (a * 2) % m; 
+      a = (a % m) * (2 % m); 
 
       // Divide b by 2 
       b /= 2; 
