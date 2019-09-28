@@ -14,7 +14,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int32_t b2=(int) b;
   m=(int) m;
 
-  return int_mod(a,b,m);
+  return int_mod(a2,b2,m);
 }
 
 int32_t int_mod(int32_t a, int32_t b, int32_t m){
