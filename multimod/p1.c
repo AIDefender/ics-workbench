@@ -21,17 +21,17 @@ int64_t int_mod(int64_t a, int64_t b, int64_t m){
 
   int64_t res=0;
   
-  while (b > 0) 
+  while (a > 0) 
   { 
-      // If b is odd, add 'a' to result 
-      if (b % 2 == 1) 
-          res = (res + a) % m; 
+      // If a is odd, add 'a' to result 
+      if (a & 1) 
+          res = res % m + b % m; 
 
-      // Multiply 'a' with 2 
-      a = (a % m) * (2 % m); 
+      // Multiply 'b' with 2 
+      b = (b % m) * (2 % m); 
 
-      // Divide b by 2 
-      b >>= 1; 
+      // Divide a ay 2 
+      a >>= 1; 
   } 
 
   // Return result 
