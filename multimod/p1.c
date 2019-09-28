@@ -21,11 +21,7 @@ int64_t int_mod(int64_t a, int64_t b, int64_t m){
 
   int64_t res=0;
   if (m==1) return 0;
-  if (m==2)
-  {
-    printf("%ld %ld\n",a&1,b&1);
-    return (a&1)&&(b&1);
-  } 
+  if (m==2) return (a&1)&&(b&1);
     
   
   while (a > 0) 
