@@ -3,9 +3,9 @@
 #define ll int64_t
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
-  uint64_t a1=(uint64_t)a&18446744069414584320u >> 32;
+  int64_t a1=a&18446744069414584320u >> 32;
   a1 = (int) a1;
-  uint64_t b1=(uint64_t)b&18446744069414584320u >> 32;
+  int64_t b1=b&18446744069414584320u >> 32;
   b1 = (int) b1;
   int32_t a2=(int) a;
   int32_t b2=(int) b;
