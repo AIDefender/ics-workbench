@@ -12,8 +12,6 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   b1 = (int) b1;
   int32_t a2=(int) a;
   int32_t b2=(int) b;
-  int32_t m2=(int32_t) m;
-  printf("%d %d %d\n",a2,b2,m2);
 
   return int_mod(a2,b2,m);
 }
