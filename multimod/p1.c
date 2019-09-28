@@ -31,7 +31,7 @@ int64_t int_mod(int64_t a, int64_t b, int64_t m){
       a = (a % m) * (2 % m); 
 
       // Divide b by 2 
-      b /= 2; 
+      b >> 1; 
   } 
 
   // Return result 
