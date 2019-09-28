@@ -3,7 +3,9 @@
 #define ll int64_t
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
-  (int) a,(int)b,(int)m;
+  (int) a;
+  (int) b;
+  (int) m;
 
   int res=0;
   
