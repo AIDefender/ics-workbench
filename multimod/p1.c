@@ -53,7 +53,7 @@ uint64_t compute_res(int64_t a, int64_t b, int64_t m)
   int64_t m_2 =(uint64_t) pow(2,32) % m;
 
 
-  uint64_t res = (((((uint64_t)m_2 * m_2)%m) * a1_m)%m * b1_m)% m  + m_2*(((uint64_t)a1_m*b2_m)%m+((uint64_t)a2_m*b1_m)%m)%m + (uint64_t)a2_m*b2_m%m;
+  uint64_t res = ((uint64_t)((uint64_t)(((uint64_t)m_2 * m_2)%m) * a1_m)%m * b1_m)% m  + m_2*(uint64_t)(((uint64_t)a1_m*b2_m)%m+((uint64_t)a2_m*b1_m)%m)%m + (uint64_t)a2_m*b2_m%m;
   
   return res;
 
