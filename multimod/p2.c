@@ -17,7 +17,7 @@ int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
   } 
   diff = clock()-start;
   int msec = diff * 1000 / CLOCKS_PER_SEC;
-  printf("time=%dms\n",msec); 
+  // printf("time=%dms\n",msec); 
   return 0;
 }
 int64_t gen_rand_64()
