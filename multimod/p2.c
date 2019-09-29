@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 static int64_t gen_rand_64();
-static int64_t compute_res(int64_t,int64_t,int64_t);
+static uint64_t compute_res(int64_t,int64_t,int64_t);
 int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
   clock_t start=clock(), diff;
   int i;
