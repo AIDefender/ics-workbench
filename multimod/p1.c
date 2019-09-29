@@ -41,7 +41,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   printf("%d %d %d %d\n",a1,a2,b1,b2);
   printf("%d %d %d %d\n",a1_m,a2_m,b1_m,b2_m);
 
-  printf("%ld",a2_m*b2_m%m);
+  printf("%ld\n",a2_m*b2_m%m);
 
   int64_t m_2 =(int64_t) pow(2,32) % m;
 
