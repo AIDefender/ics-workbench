@@ -3,28 +3,28 @@
 #include <math.h> 
 #include <time.h>
 #include <stdlib.h>
-// static int64_t gen_rand_64();
+static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
-  // clock_t start=clock(), diff;
-  // int i;
-  // for(i=0;i<100000;i++)
-  // { 
-  //   a = gen_rand_64();
-  //   b = gen_rand_64();
-  //   m = gen_rand_64();
-  //   printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
-  // } 
-  // diff = clock()-start;
-  // int msec = diff * 1000 / CLOCKS_PER_SEC;
-  // printf("time=%dms\n",msec);
+  clock_t start=clock(), diff;
+  int i;
+  for(i=0;i<100000;i++)
+  { 
+    a = gen_rand_64();
+    b = gen_rand_64();
+    m = gen_rand_64();
+    printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
+  } 
+  diff = clock()-start;
+  int msec = diff * 1000 / CLOCKS_PER_SEC;
+  printf("time=%dms\n",msec);
 
   return compute_res(a,b,m);
 }
-// int64_t gen_rand_64()
-// {
-//   return rand();
-// }
+int64_t gen_rand_64()
+{
+  return rand();
+}
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   uint32_t f = 0xffffffff;
