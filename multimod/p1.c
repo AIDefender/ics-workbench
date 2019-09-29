@@ -56,7 +56,7 @@ int* gen_bits(int64_t a){
   int i=0;
   while (a)
   {
-    bits[i]=a%2;
+    bits[63-i]=a%2;
     a >>= 1;
     i++;
   }
