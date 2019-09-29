@@ -18,6 +18,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   } 
   time(&end);
   printf("time=%f\n",difftime(end,start)); 
+  return 0;
 }
 int64_t gen_rand_64()
 {
