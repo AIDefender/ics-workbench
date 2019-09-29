@@ -21,7 +21,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 }
 int64_t gen_rand_64()
 {
-  return (rand()<<32)+rand();
+  return (rand()<<31)+rand();
 }
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
