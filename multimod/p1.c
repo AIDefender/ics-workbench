@@ -44,8 +44,8 @@ uint64_t compute_res(int64_t a, int64_t b, int64_t m)
   {
     for(j=0;j<63;j++)
     {
-      uint64_t am=((uint64_t)a_bits[i]<<i) %m;
-      uint64_t bm=((uint64_t)b_bits[i]<<i) %m;
+      uint64_t am=((uint64_t)(a_bits[i]<<i)) %m;
+      uint64_t bm=((uint64_t)(b_bits[i]<<i)) %m;
       res+=(am+bm)%m;
     }
   }
