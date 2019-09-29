@@ -1,8 +1,30 @@
 #include "multimod.h"
 #include <stdio.h>
-#include <math.h>
+#include <math.h> 
+#include <time.h>
+#include <stdlib.h>
 
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
+  time_t start, end;
+  time(&start);
+  int i;
+  int64_t res;
+  for(i=0;i<10000;i++)
+  { 
+    a = gen_rand_64();
+    b = gen_rand_64();
+    m = gen_rand_64();
+    printf("%ld",compute_res(a,b,m));
+  } 
+  time(&end);
+  printf("time=%d\n",difftime(end,start)); 
+}
+int64_t gen_rand_64()
+{
+  return rand()<<32+rand();
+}
+int64_t compute_res(int64_t a, int64_t b, int64_t m)
+{
   uint32_t f = 0xffffffff;
   uint32_t a2 = a&f;
   uint32_t b2 = b&f;
@@ -20,5 +42,6 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int64_t res = (m_2 * m_2 * a1_m * b1_m)% m  + m_2*(a1_m*b2_m+a2_m*b1_m)%m + a2_m*b2_m%m;
   
   return res;
+
 }
 
