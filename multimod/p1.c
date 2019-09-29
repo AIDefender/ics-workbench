@@ -9,7 +9,6 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   time_t start, end;
   time(&start);
   int i;
-  int64_t res;
   for(i=0;i<10000;i++)
   { 
     a = gen_rand_64();
