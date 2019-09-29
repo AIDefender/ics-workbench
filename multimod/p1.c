@@ -9,7 +9,7 @@ static int* gen_bits(int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   clock_t start=clock(), diff;
   int i;
-  for(i=0;i<1;i++)
+  for(i=0;i<100000;i++)
   { 
     a = gen_rand_64();
     b = gen_rand_64();
