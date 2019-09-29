@@ -5,10 +5,11 @@
 #include <stdlib.h>
 static int64_t gen_rand_64();
 static uint64_t compute_res(int64_t,int64_t,int64_t);
+static int* gen_bits(int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   clock_t start=clock(), diff;
   int i;
-  for(i=0;i<100000;i++)
+  for(i=0;i<1;i++)
   { 
     a = gen_rand_64();
     b = gen_rand_64();
@@ -34,28 +35,33 @@ int64_t gen_rand_64()
 }
 uint64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
-  uint32_t f = 0xffffffff;
-  uint32_t a2 = a&f;
-  uint32_t b2 = b&f;
-  int32_t a1 = a>>32;
-  int32_t b1 = b>>32;
+  int a_bits[63];
+  int b_bits[63];
+  a_bits = gen_bits(a);
+  b_bits = gen_bits(b);
+  int i;
+  for(i=0;i<63;i++)
+  {
+    printf("%d",a_bits[i]);
+  }
+  printf("\n");
+  for(i=0;i<63;i++)
+  {
+    printf("%d",b_bits[i]);
+  }
+  printf("\n");
+  return 0;
+}
 
-  int32_t a1_m = a1 % m;
-  int32_t b1_m = b1 % m;
-  int32_t a2_m = a2 % m;
-  int32_t b2_m = b2 % m;
-
-  // printf("%d %d %d %d\n",a1,a2,b1,b2);
-  // printf("%d %d %d %d\n",a1_m,a2_m,b1_m,b2_m);
-
-  // printf("%ld\n",(int64_t)a2_m*b2_m%m);
-
-  int64_t m_2 =(uint64_t) pow(2,32) % m;
-
-
-  uint64_t res = ((uint64_t)((uint64_t)(((uint64_t)m_2 * m_2)%m) * a1_m)%m * b1_m)% m  + (uint64_t)m_2*(((uint64_t)a1_m*b2_m)%m+((uint64_t)a2_m*b1_m)%m)%m + (uint64_t)a2_m*b2_m%m;
-  
-  return res;
-
+int* gen_bits(int64_t a){
+  int *bits = (int*)malloc(63*sizeof(int));
+  int i=0;
+  while (a)
+  {
+    bits[i]=a%2;
+    a >>= 1;
+    i++;
+  }
+  return bits;
 }
 
