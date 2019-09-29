@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 static int64_t gen_rand_64();
-static int64_t compute_res(int64_t,int64_t,int64_t);
+static uint64_t compute_res(int64_t,int64_t,int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   clock_t start=clock(), diff;
   int i;
@@ -32,7 +32,7 @@ int64_t gen_rand_64()
   }
   return res;
 }
-int64_t compute_res(int64_t a, int64_t b, int64_t m)
+uint64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   uint32_t f = 0xffffffff;
   uint32_t a2 = a&f;
@@ -53,7 +53,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   int64_t m_2 =(int64_t) pow(2,32) % m;
 
 
-  int64_t res = (((((int64_t)m_2 * m_2)%m) * a1_m)%m * b1_m)% m  + m_2*(((int64_t)a1_m*b2_m)%m+((int64_t)a2_m*b1_m)%m)%m + (int64_t)a2_m*b2_m%m;
+  uint64_t res = (((((int64_t)m_2 * m_2)%m) * a1_m)%m * b1_m)% m  + m_2*(((int64_t)a1_m*b2_m)%m+((int64_t)a2_m*b1_m)%m)%m + (int64_t)a2_m*b2_m%m;
   
   return res;
 
