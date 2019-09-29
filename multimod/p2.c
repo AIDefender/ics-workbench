@@ -24,7 +24,7 @@ int64_t gen_rand_64()
 {
   int i = 0;
   int64_t res=0;
-  for(;i<62;i++)
+  for(;i<61;i++)
   {
     res+=rand()%2;
     res <<= 1;
