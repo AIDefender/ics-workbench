@@ -38,10 +38,10 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   int32_t a2_m = a2 % m;
   int32_t b2_m = b2 % m;
 
-  printf("%d %d %d %d\n",a1,a2,b1,b2);
-  printf("%d %d %d %d\n",a1_m,a2_m,b1_m,b2_m);
+  // printf("%d %d %d %d\n",a1,a2,b1,b2);
+  // printf("%d %d %d %d\n",a1_m,a2_m,b1_m,b2_m);
 
-  printf("%ld\n",(int64_t)a2_m*b2_m%m);
+  // printf("%ld\n",(int64_t)a2_m*b2_m%m);
 
   int64_t m_2 =(int64_t) pow(2,32) % m;
 
