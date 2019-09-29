@@ -5,7 +5,7 @@
 #include <stdlib.h>
 int64_t gen_rand_64();
 int64_t compute_res(int64_t,int64_t,int64_t);
-int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
+int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
   time_t start, end;
   time(&start);
   int i;
