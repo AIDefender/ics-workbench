@@ -35,10 +35,8 @@ int64_t gen_rand_64()
 }
 uint64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
-  int a_bits[63];
-  int b_bits[63];
-  a_bits = gen_bits(a);
-  b_bits = gen_bits(b);
+  int *a_bits = gen_bits(a);
+  iny *b_bits = gen_bits(b);
   int i;
   for(i=0;i<63;i++)
   {
