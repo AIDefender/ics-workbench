@@ -14,7 +14,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
     a = gen_rand_64();
     b = gen_rand_64();
     m = gen_rand_64();
-    printf("%ld\n",compute_res(a,b,m));
+    printf("%ld %ld %ld\n",compute_res(a,b,m));
   } 
   time(&end);
   printf("time=%f\n",difftime(end,start)); 
