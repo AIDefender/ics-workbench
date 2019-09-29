@@ -13,7 +13,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
     a = gen_rand_64();
     b = gen_rand_64();
     m = gen_rand_64();
-    printf("%lld %lld %lld %lld\n",a,b,m,compute_res(a,b,m));
+    printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
   } 
   diff = clock()-start;
   int msec = diff * 1000 / CLOCKS_PER_SEC;
@@ -23,7 +23,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 }
 int64_t gen_rand_64()
 {
-  return (rand()<<30);
+  return (rand()<<2);
 }
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
