@@ -3,7 +3,7 @@
 #include <math.h> 
 #include <time.h>
 #include <stdlib.h>
-static int64_t gen_rand_64();
+// static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
 static int* gen_bits(int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
@@ -22,17 +22,17 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 
   return compute_res(a,b,m);
 }
-int64_t gen_rand_64()
-{
-  int i = 0;
-  int64_t res=0;
-  for(;i<61;i++)
-  {
-    res+=rand()%2;
-    res <<= 1;
-  }
-  return res;
-}
+// int64_t gen_rand_64()
+// {
+//   int i = 0;
+//   int64_t res=0;
+//   for(;i<61;i++)
+//   {
+//     res+=rand()%2;
+//     res <<= 1;
+//   }
+//   return res;
+// }
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   int *a_bits = gen_bits(a);
