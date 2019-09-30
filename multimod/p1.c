@@ -3,6 +3,7 @@
 #include <math.h> 
 #include <time.h>
 #include <stdlib.h>
+#include <assert.h>
 // static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
 static int* gen_bits(int64_t);
@@ -46,6 +47,9 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
     {
       int64_t am=(a_bits[i]<<i) %m;
       int64_t bm=(b_bits[i]<<i) %m;
+      assert(am>0,printf("%ld",am));
+      assert(bm>0,printf("%ld",bm));
+
       res+=(am+bm)%m;
       printf("%ld\n",res);
     }
