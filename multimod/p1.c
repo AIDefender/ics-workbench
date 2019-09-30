@@ -46,16 +46,33 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   {
     for(j=0;j<63;j++)
     {
-      int64_t am=a_bits[i]*((1l<<i) %m);
-      int64_t bm=b_bits[j]*((1l<<j) %m);
-      printf("%d %ld %ld %ld\n",j,am,bm,m);
+      // int64_t am=a_bits[i]*((1l<<i) %m);
+      // int64_t bm=b_bits[j]*((1l<<j) %m);
+      // printf("%d %ld %ld %ld\n",j,am,bm,m);
       // ! bm可能超过32位,导致溢出
       // ! 说明这个方法根本上是错误的
       // ! 注意排查的方式.我:痛苦的debug;其实可以在代数层面多思考
-      res+=(am*bm)%m;
-      res=res%m;
-      printf("res:%ld\n",res);
-      assert(res>=0);
+      // !! 可以直接不停×2取模
+      // res+=(am*bm)%m;
+      // res=res%m;
+      if (a_bits[i]==0)
+      {
+        res+=b_bits[j]*((1l<<j) %m);
+        res = res%m;
+        printf("res:%ld\n",res);
+        assert(res>=0);
+        continue;
+      }
+      int k;
+      for(k=0;k<i;k++)
+      {
+        res+=(b_bits[j]*((1l<<j) %m)<<k)%m;
+        res = res%m;
+        printf("res:%ld\n",res);
+        assert(res>=0);
+
+      }
+      
     }
   }
   
