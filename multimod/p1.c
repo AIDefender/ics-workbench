@@ -47,6 +47,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
     {
       int64_t am=a_bits[i]*(1<<i %m);
       int64_t bm=b_bits[j]*(1<<j %m);
+      printf("%ld %ld\n",am,bm);
       // int64_t bm=((int64_t)b_bits[j]<<j) %m;
       
       res+=(am*bm)%m;
