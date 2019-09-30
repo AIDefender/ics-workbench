@@ -55,24 +55,17 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // !! 可以直接不停×2取模
       // res+=(am*bm)%m;
       // res=res%m;
-      if (a_bits[i]==0)
+      if (b_bits[j]==0)
       {
-        res+=b_bits[j]*((1l<<j) %m);
-        res = res%m;
-        printf("res:%ld\n",res);
-        assert(res>=0);
         continue;
       }
       int k;
-      for(k=0;k<i;k++)
+      int64_t am=(a_bits[i]<<i)%m;
+      for(k=0;k<j;k++)
       {
-        res+=(b_bits[j]*((1l<<j) %m)<<k)%m;
-        res = res%m;
-        printf("res:%ld\n",res);
-        assert(res>=0);
-
+        am = (am << 1)%m;
       }
-      
+      res = (res+am)%m;
     }
   }
   
