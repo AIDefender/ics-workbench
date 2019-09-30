@@ -54,7 +54,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       }
       if (bm<0)
       {
-        printf("%d %ld\n",j,bm);
+        printf("%d\t %ld\n",j,bm);
         assert(0);
       }
       
