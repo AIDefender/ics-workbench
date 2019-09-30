@@ -44,7 +44,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
         res = res % m + b % m; 
       } 
         
-      b = (b % m) << 2; 
+      b = (b % m) << 1; 
       a >>= 1; 
   } 
   return res % m;
