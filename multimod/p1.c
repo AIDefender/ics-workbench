@@ -47,8 +47,18 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
     {
       int64_t am=(a_bits[i]<<i) %m;
       int64_t bm=(b_bits[i]<<i) %m;
-      assert(am>=0);
-      assert(bm>=0);
+      if (am<0)
+      {
+        printf("%d %ld",i,am);
+        assert(0);
+      }
+      if (bm<0)
+      {
+        printf("%d %ld",j,bm);
+        assert(0);
+      }
+      
+      
       res+=(am+bm)%m;
       assert(res>=0);
       printf("%ld\n",res);
