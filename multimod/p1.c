@@ -36,19 +36,8 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
 // }
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
-  int ii=0;
   int *a_bits = gen_bits(a);
   int *b_bits = gen_bits(b);
-  for(ii=0;ii<63;ii++)
-  {
-    printf("%d",a_bits[ii]);
-  }
-  printf("\n");
-  for(ii=0;ii<63;ii++)
-  {
-    printf("%d",b_bits[ii]);
-  }
-  printf("\n");
   int i = 0;
   int j = 0;
   int64_t res=0;
@@ -62,6 +51,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // int64_t bm=((int64_t)b_bits[j]<<j) %m;
       
       res+=(am*bm)%m;
+      res%=m;
       assert(res>=0);
     }
   }
