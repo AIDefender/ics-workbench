@@ -38,9 +38,14 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   int ii=0;
   int *a_bits = gen_bits(a);
-  for(;ii<63;ii++)
+  for(ii=0;ii<63;ii++)
   {
     printf("%d",a_bits[ii]);
+  }
+  printf("\n");
+  for(ii=0;ii<63;ii++)
+  {
+    printf("%d",b_bits[ii]);
   }
   printf("\n");
   int *b_bits = gen_bits(b);
