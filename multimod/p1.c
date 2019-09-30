@@ -47,12 +47,12 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
     {
       int64_t am=(a_bits[i]<<i) %m;
       int64_t bm=(b_bits[i]<<i) %m;
-      if (am<0)
+      if (am<(int64_t)0)
       {
         printf("%d %ld",i,am);
         assert(0);
       }
-      if (bm<0)
+      if (bm<(int64_t)0)
       {
         printf("%d %ld",j,bm);
         assert(0);
