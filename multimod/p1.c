@@ -50,7 +50,6 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       
       res+=(am+bm)%m;
       assert(res>=0);
-      printf("%ld\n",res);
     }
   }
   
