@@ -10,12 +10,12 @@ static int* gen_bits(int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   clock_t start=clock(), diff;
   int i;
-  printf("%ld %ld %ld ",a,b,m);
   for(i=0;i<10000;i++)
   { 
     a = gen_rand_64();
     b = gen_rand_64();
     m = gen_rand_64();
+    printf("%ld %ld %ld ",a,b,m);
     printf("%lu\n",compute_res(a,b,m));
   } 
   diff = clock()-start;
