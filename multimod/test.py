@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 import os
-ops=[i.split() for i in os.popen("./multimod-64 -i 2 1 1 1")]
+ops=[i.split() for i in os.popen("./multimod-64 -i 1 1 1 1")]
 for i in ops:
     try:
         i=[eval(j) for j in i]
