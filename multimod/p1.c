@@ -51,7 +51,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // int64_t bm=((int64_t)b_bits[j]<<j) %m;
       
       res+=(am*bm)%m;
-      res%=m;
+      res=res%m;
       printf("res:%ld\n",res);
       assert(res>=0);
     }
