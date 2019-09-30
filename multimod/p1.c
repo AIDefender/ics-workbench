@@ -48,12 +48,12 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
     {
       int64_t am=a_bits[i]*(1l<<i %m);
       int64_t bm=b_bits[j]*(1l<<j %m);
-      // printf("%ld %ld\n",am,bm);
-      // int64_t bm=((int64_t)b_bits[j]<<j) %m;
+      printf("%ld %ld\n",am,bm);
+      int64_t bm=((int64_t)b_bits[j]<<j) %m;
       
       res+=(am*bm)%m;
       res=res%m;
-      // printf("res:%ld\n",res);
+      printf("res:%ld\n",res);
       assert(res>=0);
     }
   }
