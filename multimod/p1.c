@@ -60,7 +60,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       }
       int k;
       int64_t am=(a_bits[i]<<i)%m;
-      printf("am:%ld",am);//!这一步可能就有问题
+      printf("am:%ld\n",am);//!这一步可能就有问题
       if (j==0)
       {
         res = (res+am)%m;
