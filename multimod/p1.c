@@ -99,6 +99,7 @@ int* gen_bits(int64_t a){
   {
     printf("%d",bits[ii]);
   }
+  printf("\n");
   return bits;
 }
 
