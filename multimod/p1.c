@@ -90,16 +90,16 @@ int* gen_bits(int64_t a){
   int i=0;
   while (a)
   {
-    bits[62-i]=a%2;
+    bits[i]=a%2;
     a >>= 1;
     i++;
   }
-  int ii=0;
-  for(;ii<63;ii++)
-  {
-    printf("%d",bits[62-ii]);
-  }
-  printf("\n");
+  // int ii=0;
+  // for(;ii<63;ii++)
+  // {
+  //   printf("%d",bits[62-ii]);
+  // }
+  // printf("\n");
   return bits;
 }
 
