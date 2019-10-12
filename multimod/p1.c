@@ -38,7 +38,6 @@ int64_t gen_rand_64()
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   int *a_bits = gen_bits(a);
-  printf("\n");
   int *b_bits = gen_bits(b);
   int i = 0;
   int j = 0;
