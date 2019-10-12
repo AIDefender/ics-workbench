@@ -59,17 +59,23 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
         continue;
       }
       int k;
-      int64_t am=(a_bits[i]<<i)%m;
-      printf("am:%ld\n",am);//!这一步可能就有问题
-      if (j==0)
-      {
-        res = (res+am)%m;
-        continue; 
-      }
-      for(k=0;k<j;k++)
+      // int64_t am=(a_bits[i]<<i)%m;
+      int64_t am=0;
+      for(k=0;k<i+j;k++)
       {
         am = (am << 1)%m;
       }
+
+      printf("am:%ld\n",am);//!这一步可能就有问题
+      // if (j==0)
+      // {
+      //   res = (res+am)%m;
+      //   continue; 
+      // }
+      // for(k=0;k<j;k++)
+      // {
+      //   am = (am << 1)%m;
+      // }
       res = (res+am)%m;
     }
   }
