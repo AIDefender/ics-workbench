@@ -23,11 +23,11 @@ int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
 int64_t gen_rand_64()
 {
   int i = 0;
-  int64_t res=0;
-  for(;i<62;i++)
+  int64_t res=rand()%2;
+  for(;i<61;i++)
   {
-    res+=rand()%2;
     res <<= 1;
+    res+=rand()%2;
   }
   return res;
 }
