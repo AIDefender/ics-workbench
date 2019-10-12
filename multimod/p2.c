@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h> 
 #include <time.h>
+#include <assert.h>
 #include <stdlib.h>
 static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
@@ -13,7 +14,7 @@ int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
     a = gen_rand_64();
     b = gen_rand_64();
     m = gen_rand_64();
-    printf("%ld %ld %ld %lu\n",a,b,m,compute_res(a,b,m));
+    printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
   } 
   diff = clock()-start;
   int msec = diff * 1000 / CLOCKS_PER_SEC;
@@ -46,6 +47,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
         
       b = (b % m) << 1; 
       a >>= 1; 
+      assert(res>0);
   } 
   return res % m;
 
