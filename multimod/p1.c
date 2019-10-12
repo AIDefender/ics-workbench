@@ -98,7 +98,7 @@ int* gen_bits(int64_t a){
   int ii=0;
   for(;ii<63;ii++)
   {
-    printf("%d",a_bits[ii]);
+    printf("%d",bits[ii]);
   }
   return bits;
 }
