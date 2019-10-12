@@ -48,7 +48,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       b = (b % m) << 1; 
       a >>= 1; 
       printf("%ld\n",res);
-      assert(res>0);
+      assert(res>=0);
   } 
   return res % m;
 
