@@ -50,8 +50,22 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       {
         res = res % m + b % m; 
       } 
-        
-      b = (b % m) << 1; 
+      if (b>m)
+      {
+        b = (b % m) << 1; 可能溢出!
+      }  
+      else 
+      {
+        if (b>(m>>1))
+        {
+          b<<=1;
+        }
+        else 
+        {
+          b=(b-m+b)%m;
+        }
+      }
+      assert(b>=0);
       a >>= 1; 
       // printf("%ld %ld %ld %ld\n",res,a,b,m);
       assert(res>=0);
