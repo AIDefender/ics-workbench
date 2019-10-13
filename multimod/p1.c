@@ -12,7 +12,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int i;
   for(i=0;i<1000;i++)
   { 
-    a = gen_rand_64();
+    a = gen_rand_64()-10;
     assert(a>0);
     b = gen_rand_64();
     assert(b>0);
