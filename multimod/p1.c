@@ -44,7 +44,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   int *b_bits = gen_bits(b);
   int i = 0;
   int j = 0;
-  int64_t res=0;
+  uint64_t res=0;
   for(i=0;i<63;i++)
   {
     for(j=0;j<63;j++)
@@ -85,7 +85,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   }
   
   
-  return res;
+  return (int64_t)res;
 }
 
 int* gen_bits(int64_t a){
