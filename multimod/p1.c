@@ -75,7 +75,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
         {
           if (am>(m>>1))
           {
-            am=(am-m+am)%m;
+            am=(am-m+am)%m;// ! 最精髓的一行,精确操控确保不溢出
           }
           else 
           {
