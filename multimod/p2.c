@@ -68,7 +68,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       assert(b>=0);
       a >>= 1; 
       // printf("%ld %ld %ld %ld\n",res,a,b,m);
-      assert(res>=0);
+      // assert(res>=0);
   } 
   return res % m;
 
