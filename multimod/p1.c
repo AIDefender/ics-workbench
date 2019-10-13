@@ -13,8 +13,11 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   for(i=0;i<1000;i++)
   { 
     a = gen_rand_64();
+    assert(a>0);
     b = gen_rand_64();
+    assert(b>0);
     m = gen_rand_64();
+    assert(m>0);
     printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
   } 
   diff = clock()-start;
@@ -28,7 +31,7 @@ int64_t gen_rand_64()
   //3
   int i = 0;
   int64_t res=rand()%2;
-  for(;i<61;i++)
+  for(;i<62;i++)
   {
     res <<= 1;
     res+=rand()%2;
