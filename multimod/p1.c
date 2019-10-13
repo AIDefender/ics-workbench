@@ -12,7 +12,7 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   int i;
   for(i=0;i<1000;i++)
   { 
-    a = gen_rand_64()-10;
+    a = gen_rand_64();
     assert(a>0);
     b = gen_rand_64();
     assert(b>0);
@@ -80,7 +80,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // {
       //   am = (am << 1)%m;
       // }
-      res = (res+am)%m;
+      res = res%m+am%m;
       assert(res>>63==0);
     }
   }
