@@ -58,11 +58,11 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       {
         if (b>(m>>1))
         {
-          b<<=1;
+          b=(b-m+b)%m;
         }
         else 
         {
-          b=(b-m+b)%m;
+          b<<=1;
         }
       }
       assert(b>=0);
