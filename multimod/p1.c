@@ -80,7 +80,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // {
       //   am = (am << 1)%m;
       // }
-      res = res%m+am%m;
+      res = (res%m+am%m)%m;
       // assert(res>>63==0);
     }
   }
