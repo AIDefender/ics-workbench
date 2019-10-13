@@ -40,7 +40,7 @@ int64_t gen_rand_64()
 }
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
-  int64_t res=0;
+  uint64_t res=0;
   if (m==1) return 0;
   if (m==2) return (a&1)&&(b&1);
     
@@ -70,6 +70,6 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       // printf("%ld %ld %ld %ld\n",res,a,b,m);
       // assert(res>=0);
   } 
-  return res % m;
+  return (int64_t )res % m;
 
 }
