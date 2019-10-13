@@ -18,7 +18,7 @@ int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
     m = gen_rand_64();
     assert(m>0);
     // assert(b%m>0);
-    printf("%x %x\n",a%m,b%m);
+    printf("%ld %ld\n",a%m,b%m);
     printf("%ld %ld %ld\n",a,b,m);
     printf("%ld\n",compute_res(a,b,m));
   } 
