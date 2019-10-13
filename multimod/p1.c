@@ -67,7 +67,21 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       int64_t am=a_bits[i];
       for(k=0;k<i+j;k++)
       {
-        am = (am << 1)%m;
+        if (am>m)
+        {
+          am = (am % m) << 1; //可能溢出!
+        }  
+        else 
+        {
+          if (am>(m>>1))
+          {
+            am=(am-m+am)%m;
+          }
+          else 
+          {
+            am<<=1;
+          }
+        }
       }
 
       // printf("am:%ld\n",am);//!这一步可能就有问题
