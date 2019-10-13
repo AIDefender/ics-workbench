@@ -13,14 +13,11 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   for(i=0;i<1000;i++)
   { 
     a = gen_rand_64();
-    // assert(a>0);
-    // b = gen_rand_64();
-    // assert(b>0);
-    // m = gen_rand_64();
-    // assert(m>0);
-    a=6803537774306284686;
-    b=6292831396809025375;
-    m=9055815995066776794;
+    assert(a>0);
+    b = gen_rand_64();
+    assert(b>0);
+    m = gen_rand_64();
+    assert(m>0);
     printf("%ld %ld %ld %ld\n",a,b,m,compute_res(a,b,m));
   } 
   diff = clock()-start;
