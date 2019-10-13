@@ -48,7 +48,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   { 
       if (a & 1)
       {
-        res = res % m + b % m; 
+        res = (res % m + b % m)%m; 
       } 
       if (b>m)
       {
