@@ -24,7 +24,7 @@ int asm_popcnt(uint64_t n) {
        : 
        : "b" (n)
        : "%rax","%edx"
-       )
+       );
   
   return 0;
 }
