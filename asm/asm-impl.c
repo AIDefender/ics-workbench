@@ -16,7 +16,7 @@ int asm_popcnt(uint64_t n) {
   asm ("xor -0x8(%%rbp), -0x8(%%rbp)\n"
        "mov $0x0, -0x4(%%rbp)\n"
        "dest2:shr $0x1, %[in] \n"
-       "mov %[in], -0x18(%rbp)\n"
+       "mov %[in], -0x18(%%rbp)\n"
        "and $0x1, %[in]\n"
        "test %[in], %[in]\n"
        "je dest1\n"
