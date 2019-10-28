@@ -20,8 +20,8 @@ int asm_popcnt(uint64_t n) {
        : "%rax","%edx");
   asm ("dest2:shr $0x1, %[in] \n"
        "mov %[in], %%rdi\n"
-       "and $0x1, %0\n"
-       "test %0, %0\n"
+       "and $0x1, %[in]\n"
+       "test %[in], %[in]\n"
        "je dest1\n"
        "inc %%rax\n"
        "dest1:mov %%rdi,%[in]\n"
