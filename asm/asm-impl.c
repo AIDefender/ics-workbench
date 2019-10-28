@@ -14,7 +14,7 @@ int asm_popcnt(uint64_t n) {
   // TODO: implement
   int x=0;
   asm ("xor %%rax, %%rax\n"
-       "mov $0x0, -0x4(%%rbp)\n"
+       "movl $0x0, -0x4(%%rbp)\n"
        "dest2:shr $0x1, %[in] \n"
        "mov %[in], -0x18(%%rbp)\n"
        "and $0x1, %[in]\n"
