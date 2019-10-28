@@ -12,6 +12,7 @@ int64_t asm_add(int64_t a, int64_t b) {
 
 int asm_popcnt(uint64_t n) {
   // TODO: implement
+  int x;
   asm ("xor %%rax, %%rax\n"
        "xor %%edx, %%edx;"
        : 
@@ -27,11 +28,12 @@ int asm_popcnt(uint64_t n) {
        "inc %%edx\n"
        "cmp $0x3f,%%edx\n"
        "jne dest2\n"
-       : 
+       "mov %%rax, %[out]"
+       : [out] "=r"(x)
        : "r" (n)
        : "%rax","%edx");
   
-  return 0;
+  return x;
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
