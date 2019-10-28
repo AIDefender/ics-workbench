@@ -13,22 +13,22 @@ int64_t asm_add(int64_t a, int64_t b) {
 int asm_popcnt(uint64_t n) {
   // TODO: implement
   int x=0;
-  asm ("xor %%rdi, %%rdi\n"
+  asm ("xor -0x8(%%rbp), -0x8(%%rbp)\n"
        "mov $0x0, -0x4(%%rbp)\n"
        "dest2:shr $0x1, %[in] \n"
        "mov %[in], -0x18(%rbp)\n"
        "and $0x1, %[in]\n"
        "test %[in], %[in]\n"
        "je dest1\n"
-       "inc %%rdi\n"
+       "inc -0x8(%%rbp)\n"
        "dest1:mov -0x18(%rbp),%[in]\n"
        "inc -0x4(%%rbp)\n"
        "cmp $0x3f,-0x4(%%rbp)\n"
        "jne dest2\n"
-       "mov %%rdi, %[out]\n"
+       "mov -0x8(%%rbp), %[out]\n"
        : [out] "+m"(x)
        : [in] "d" (n)
-       : "%rdi","%rdx","memory");
+       : "%rdx","memory");
   
   return x;
 }
