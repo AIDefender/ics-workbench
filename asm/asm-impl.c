@@ -21,7 +21,7 @@ int asm_popcnt(uint64_t n) {
        "test %[in], %[in]\n"
        "je dest1\n"
        "inc -0x8(%%rbp)\n"
-       "dest1:mov -0x18(%rbp),%[in]\n"
+       "dest1:mov -0x18(%%rbp),%[in]\n"
        "inc -0x4(%%rbp)\n"
        "cmp $0x3f,-0x4(%%rbp)\n"
        "jne dest2\n"
