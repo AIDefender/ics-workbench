@@ -17,16 +17,16 @@ int asm_popcnt(uint64_t n) {
        : 
        : 
        : "%rax","%edx");
-  asm ("2:shr $0x1, %0 \n"
+  asm ("dest2:shr $0x1, %0 \n"
        "mov %0, %%rdi\n"
        "and $0x1, %0\n"
        "test %0, %0\n"
-       "je 1\n"
+       "je dest1\n"
        "inc %%eax\n"
-       "1:mov %%rdi,%0\n"
+       "dest1:mov %%rdi,%0\n"
        "inc %%edx\n"
        "cmp $0x3f,%%edx\n"
-       "jne 2\n"
+       "jne dest2\n"
        : 
        : "r" (n)
        : "%rax","%edx");
