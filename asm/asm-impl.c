@@ -27,7 +27,7 @@ int asm_popcnt(uint64_t n) {
        "jne dest2\n"
        "mov %%rax, %[out]\n"
        : [out] "+g"(x)
-       : [in] "g" (n)
+       : [in] "r" (n)
        : "%rax");
   
   return x;
