@@ -12,7 +12,7 @@ int64_t asm_add(int64_t a, int64_t b) {
 
 int asm_popcnt(uint64_t n) {
   // TODO: implement
-  asm ("xor %%rax, %%rax;")
+  asm ("xor %%rax, %%rax;");
   
   return 0;
 }
