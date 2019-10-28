@@ -19,7 +19,8 @@ int asm_popcnt(uint64_t n) {
        : "%rax","%edx");
   asm ("shr $0x1, %0 \n"
        "inc %%edx\n"
-       "cmp $0x3F,%%edx\n"
+       "cmp $0x3f,%%edx\n"
+       "jne $0xfd\n"
        : 
        : "r" (n)
        : "%rax","%edx");
