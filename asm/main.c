@@ -13,7 +13,7 @@ int main() {
   for (i = 0; i < 1214341; i+=12)
     for (j=0; j < 141213; j+=42)
       assert(asm_add(i, j) == i+j);
-  printf("%d",asm_popcnt(0xffffffffffffffffull));
+  printf("%d\n",asm_popcnt(0xffffffffffffffffull));
   assert(asm_popcnt(0xffffffffffffffffull) == 64);
 
   // TODO: add memcpy tests here!
