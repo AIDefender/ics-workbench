@@ -3,7 +3,11 @@
 
 int64_t asm_add(int64_t a, int64_t b) {
   // TODO: implement
-  return 0;
+  asm ("addl %[1], %[0];"
+       : [0] "+r" (a)
+       : [1] "+r" (b)
+      )
+  return a;
 }
 
 int asm_popcnt(uint64_t n) {
