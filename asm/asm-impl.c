@@ -23,8 +23,7 @@ int asm_popcnt(uint64_t n) {
        "jne "
        : 
        : "b" (n)
-       : "%rax","%edx"
-       );
+       : "%rax","%edx");
   
   return 0;
 }
