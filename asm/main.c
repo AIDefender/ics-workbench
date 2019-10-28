@@ -16,6 +16,7 @@ int main() {
   // printf("%d\n",asm_popcnt(0xffffffffffffffffull));
   assert(asm_popcnt(0xffffffffffffffffull) == 64);
   assert(asm_popcnt(0xfffffffffffffff0ull) == 60);
+  assert(asm_popcnt(0xfffff0fff0fffff0ull) == 52);
 
   // TODO: add memcpy tests here!
   assert(asm_memcpy(NULL, NULL, 0) == NULL);
