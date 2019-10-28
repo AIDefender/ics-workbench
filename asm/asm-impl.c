@@ -21,7 +21,7 @@ int asm_popcnt(uint64_t n) {
        "mov %0, %%rdi\n"
        "and $0x1, %0\n"
        "test %0, %0\n"
-       "je 1b\n"
+       "je 1\n"
        "inc %%eax\n"
        "1:mov %%rdi,%0\n"
        "inc %%edx\n"
