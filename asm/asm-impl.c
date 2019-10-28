@@ -15,7 +15,7 @@ int asm_popcnt(uint64_t n) {
   asm ("xor %rax, %rax;"
        : 
        : 
-       : rax);
+       : "%rax");
   
   return 0;
 }
