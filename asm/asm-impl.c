@@ -28,7 +28,7 @@ int asm_popcnt(uint64_t n) {
        "mov -0x8(%%rbp), %[out]\n"
        : [out] "+m"(x)
        : [in] "d" (n)
-       : "%rdx","memory");
+       : "%rdx");
   
   return x;
 }
