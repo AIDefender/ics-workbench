@@ -13,8 +13,8 @@ int64_t asm_add(int64_t a, int64_t b) {
 int asm_popcnt(uint64_t n) {
   // TODO: implement
   asm ("xor %1, %0;"
-       : "+a" ()
-       : "a" ()
+       : "+a"
+       : "a" 
        );
   
   return 0;
