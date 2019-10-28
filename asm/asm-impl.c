@@ -26,7 +26,7 @@ int asm_popcnt(uint64_t n) {
        "cmp $0x3f,-0x4(%%rbp)\n"
        "jne dest2\n"
        "mov -0x8(%%rbp), %[out]\n"
-       : [out] "+m"(x)
+       : [out] "+g"(x)
        : [in] "g" (n)
        : );
   
