@@ -22,7 +22,7 @@ int asm_popcnt(uint64_t n) {
        "cmp $0x3F,%%edx\n"
        "jne "
        : 
-       : '=r' (n)
+       : ""=r" (n)
        : "%rax","%edx");
   
   return 0;
