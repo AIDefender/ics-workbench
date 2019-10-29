@@ -55,7 +55,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
        "addq $0x1, -0xc(%%rbp)\n"
        "start: mov -0xc(%%rbp),%%rax\n"
        "cltq\n"
-       "cmp %%rax, -0x28(%rbp)\n"
+       "cmp %%rax, -0x28(%%rbp)\n"
        "ja loop\n"
        : [pos] "+g"(pos)
        : [dest] "m"(dest), [src] "m"(src), [n] "m"(n)
