@@ -20,6 +20,7 @@ int main() {
 
   // TODO: add memcpy tests here!
   assert(memcmp(memcpy("Heooooo", "Hello", 5),"Hellooo",7)==0);
+  printf("%d\n",1);
   assert(memcmp(asm_memcpy("Heooooo", "Hello", 5),"Hellooo",7)==0);
 
   // setjmp test starts here
