@@ -35,8 +35,32 @@ int asm_popcnt(uint64_t n) {
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
-  // TODO: implement
-  return NULL;
+  void* pos;
+  asm ("mov %[dest], %%rax\n"
+       "mov %%rax, -0x18(%%rbp)\n" /*传递dest参数*/
+       "mov %[src], %%rax\n"
+       "mov %%rax, -0x20(%%rbp)\n"
+       "mov %[n], %%rax\n"
+       "mov %%rax, -0x28(%%rbp)\n"
+       "mov -0x18(%%rbp), %%rax\n"
+       "mov %%rax, %[pos]\n" /*传递pos参数*/
+       "movl $0x0, -0xc(%%rbp)\n" /*loop variable*/
+       "jmp start\n"
+       "loop: mov -0x20(%%rbp),%%rax\n"
+       "movzbl (%%rax),%%edx\n"
+       "mov -0x18(%%rbp),%%rax\n"
+       "mov %%dl, (%%rax)\n"
+       "addq $0x1, -0x18(%%rbp)\n"
+       "addq $0x1, -0x20(%%rbp)\n"
+       "addq $0x1, -0xc(%%rbp)\n"
+       "start: mov -0xc(%%rbp),%%rax\n"
+       "cltq\n"
+       "cmp %%rax, -0x28(%rbp)\n"
+       "ja loop\n"
+       : [pos] "+g"(pos)
+       : [dest] "m"(dest), [src] "m"(src), [n] "m"(n)
+       : "%%rax", "%%edx", "cc", "memory");
+  return pos;
 }
 
 int asm_setjmp(asm_jmp_buf env) {
