@@ -19,9 +19,11 @@ int main() {
   assert(asm_popcnt(0xfffff0fff0fffff0ull) == 52);
 
   // TODO: add memcpy tests here!
-  assert(memcmp(memcpy("Heooooo", "Hello", 5),"Hellooo",7)==0);
-  printf("%d\n",1);
-  assert(memcmp(asm_memcpy("Heooooo", "Hello", 5),"Hellooo",7)==0);
+  // assert(memcmp(memcpy("Heooooo", "Hello", 5),"Hellooo",7)==0);
+  // printf("%d\n",1);
+  char a[10] = "Heooooo";
+  char b[10] = "Hello";
+  assert(memcmp(asm_memcpy(a, b, 5),"Hellooo",7)==0);
 
   // setjmp test starts here
   setjmp_test0();
