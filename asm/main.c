@@ -10,9 +10,9 @@ static void setjmp_test1();
 int main() {
   // TODO: add more tests here!
   int i,j;
-  for (i = 0; i < 1214341; i+=12)
-    for (j=0; j < 141213; j+=42)
-      assert(asm_add(i, j) == i+j);
+  // for (i = 0; i < 1214341; i+=12)
+  //   for (j=0; j < 141213; j+=42)
+  //     assert(asm_add(i, j) == i+j);
   // printf("%d\n",asm_popcnt(0xffffffffffffffffull));
   assert(asm_popcnt(0xffffffffffffffffull) == 64);
   assert(asm_popcnt(0xfffffffffffffff0ull) == 60);
