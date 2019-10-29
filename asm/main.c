@@ -9,7 +9,7 @@ static void setjmp_test1();
 
 int main() {
   // TODO: add more tests here!
-  int i,j;
+  // int i,j;
   // for (i = 0; i < 1214341; i+=12)
   //   for (j=0; j < 141213; j+=42)
   //     assert(asm_add(i, j) == i+j);
