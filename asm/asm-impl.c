@@ -78,10 +78,10 @@ int asm_setjmp(asm_jmp_buf env) {
        "mov %%rax, 0x38%[env]\n"  // * rsp+8存放pc
        : 
        : [env] "g"(env)
-       : "cc", "memory");
+       : "%rax", "cc", "memory");
   return 0;
 }
 
 void asm_longjmp(asm_jmp_buf env, int val) {
-  // TODO: implement
+
 }
