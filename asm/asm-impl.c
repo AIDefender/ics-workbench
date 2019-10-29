@@ -92,7 +92,7 @@ void asm_longjmp(asm_jmp_buf env, int val) {
        "mov 0x28(%%rdx), %%r15\n"
        "mov %[val], %%rax\n"
        "mov 0x30(%%rdx), %%rsp\n"
-       "mov 0x8(%%rdx), %%rbp\n"
+       "mov 0x8(%%rdx), %%rbp\n" // * gdb好像是检测ebp的改动来判断在哪个函数里面
        "mov 0x38(%%rdx), %%rdx\n"
        "jmpq *%%rdx\n"
        : 
