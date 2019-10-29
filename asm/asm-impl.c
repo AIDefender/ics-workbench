@@ -65,17 +65,18 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
 }
 
 int asm_setjmp(asm_jmp_buf env) {
-  asm ("mov %%rbx, %[env]\n" // * 保存rbx
+  asm ("mov %[env], %%rdx\n"
+       "mov %%rbx, (%%rdx)\n" // * 保存rbx
        "mov (%%rsp), %%rax\n"
-       "mov %%rax, 0x8%[env]\n" // * rsp存放rbp的旧址
-       "mov %%r12, 0x10%[env]\n"
-       "mov %%r13, 0x18%[env]\n"
-       "mov %%r14, 0x20%[env]\n"
-       "mov %%r15, 0x28%[env]\n"
+       "mov %%rax, 0x8(%%rdx)\n" // * rsp存放rbp的旧址
+       "mov %%r12, 0x10(%%rdx)\n"
+       "mov %%r13, 0x18(%%rdx)\n"
+       "mov %%r14, 0x20(%%rdx)\n"
+       "mov %%r15, 0x28(%%rdx)\n"
        "lea 0x10(%%rsp), %%rax\n"
-       "mov %%rax, 0x30%[env]\n" // * rsp+10的地址是rsp的旧值
+       "mov %%rax, 0x30(%%rdx)\n" // * rsp+10的地址是rsp的旧值
        "mov 0x8(%%rsp), %%rax\n"
-       "mov %%rax, 0x38%[env]\n"  // * rsp+8存放pc
+       "mov %%rax, 0x38(%%rdx)\n"  // * rsp+8存放pc
        : 
        : [env] "m"(env)
        : "%rax", "cc", "memory");
