@@ -1,5 +1,6 @@
 #include "asm.h"
 #include <string.h>
+#include <stdio.h>
 
 int64_t asm_add(int64_t a, int64_t b) {
   // TODO: implement
@@ -60,6 +61,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
        : [pos] "+g"(pos)
        : [dest] "m"(dest), [src] "m"(src), [n] "m"(n)
        : "%rax", "%edx", "cc", "memory");
+  printf("%s\n",pos);
   return pos;
 }
 
