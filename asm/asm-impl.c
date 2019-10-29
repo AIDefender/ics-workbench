@@ -93,7 +93,8 @@ void asm_longjmp(asm_jmp_buf env, int val) {
        "mov 0x28(%%rdx), %%r15\n"
        "mov 0x30(%%rdx), %%rsp\n"
        "mov %[val], %%rax\n"
-       "jmpq *(0x38%%rdx)\n"
+       "mov 0x38(%%rdx), %%rdx"
+       "jmpq *%%rdx\n"
        : 
        : [env] "m"(env), [val] "m"(val)
        : "cc", "memory");
