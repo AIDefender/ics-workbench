@@ -61,7 +61,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
        : [pos] "+g"(pos)
        : [dest] "m"(dest), [src] "m"(src), [n] "m"(n)
        : "%rax", "%edx", "cc", "memory");
-  printf("%s\n",pos);
+  printf("%s\n",(char*)pos);
   return pos;
 }
 
