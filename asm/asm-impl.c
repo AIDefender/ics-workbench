@@ -54,12 +54,12 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
        "addq $0x1, -0x18(%%rbp)\n"
        "addq $0x1, -0x20(%%rbp)\n"
        "addq $0x1, -0xc(%%rbp)\n"
-       "start: mov -0xc(%%rbp),%%rax\n"
+       "start: mov -0xc(%%rbp),%%rax\n"bb
        "cltq\n"
        "cmp %%rax, -0x28(%%rbp)\n"
-       "ja loop\n"
-       : [pos] "+g"(pos), [dest] "+m" (dest)
-       : [src] "m"(src), [n] "m"(n)
+       "ja loop\n"b
+       : [pos] "+g"(pos)
+       :  [dest] "m" (dest), [src] "m"(src), [n] "m"(n)
        : "%rax", "%edx", "cc", "memory");
   printf("%s\n",(char*)pos);
   return pos;
