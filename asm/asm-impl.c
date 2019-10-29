@@ -51,7 +51,7 @@ void *asm_memcpy(void *dest, const void *src, size_t n) {
        "movzbl (%%rax),%%edx\n"
        "mov -0x18(%%rbp),%%rax\n"
        "mov %%dl, (%%rax)\n"
-       "addq $0x1, -0x18(%%rbp)\(n"
+       "addq $0x1, -0x18(%%rbp)\n"
        "addq $0x1, -0x20(%%rbp)\n"
        "addq $0x1, -0xc(%%rbp)\n"
        "start: mov -0xc(%%rbp),%%rax\n"
