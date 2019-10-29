@@ -35,7 +35,7 @@ int asm_popcnt(uint64_t n) {
 }
 
 void *asm_memcpy(void *dest, const void *src, size_t n) {
-  void* pos;
+  void* pos=NULL;
   asm ("mov %[dest], %%rax\n"
        "mov %%rax, -0x18(%%rbp)\n" /*传递dest参数*/
        "mov %[src], %%rax\n"
