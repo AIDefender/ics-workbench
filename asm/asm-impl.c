@@ -77,7 +77,7 @@ int asm_setjmp(asm_jmp_buf env) {
        "mov 0x8(%%rsp), %%rax\n"
        "mov %%rax, 0x38%[env]\n"  // * rsp+8存放pc
        : 
-       : [env] "d"(env)
+       : [env] "m"(env)
        : "%rax", "cc", "memory");
   return 0;
 }
