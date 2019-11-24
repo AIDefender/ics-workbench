@@ -15,6 +15,7 @@ void print_error() {
 }
 
 void simple_loop() {
-  for (volatile int i = 0; i < 1000000; i++) ;
+  for (volatile int i = 0; i < 1000000; i++) 
+    printf("haha");
 }
 
