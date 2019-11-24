@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
   void (*func)() = lookup("dummy");
   int rounds = 10;
 
+
   run(func, rounds);
 }
 
