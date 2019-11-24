@@ -33,8 +33,7 @@ int main(int argc, char **argv) {
       strcpy(func_name,argv[i]);
     }
   }
-  printf("%d\n%s\n",rounds,func_name);
-  void (*func)() = lookup("dummy");
+  void (*func)() = lookup(func_name);
 
 
   run(func, rounds);
