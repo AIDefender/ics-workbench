@@ -16,14 +16,25 @@ static void (*lookup(const char *fn))();
 
 int main(int argc, char **argv) {
   // TODO: parse arguments: set @func and @rounds
-  printf("%d\n",argc);
-  int i = 0;
-  for(;i<argc;i++)
+  // printf("%d\n",argc);
+  int rounds = 1;
+  int i;
+  char func_name[20];
+  for(i=1;i<argc;i++)
   {
-    printf("%s\n",argv[i]);
+    // printf("%s\n",argv[i]);
+    if (strcmp(argv[i],"-r")==0)
+    {
+      i++;
+      rounds = atoi(argv[i]);
+    }
+    else 
+    {
+      strcpy(func_name,argv[i]);
+    }
   }
+  printf("%d\n%s\n",rounds,func_name);
   void (*func)() = lookup("dummy");
-  int rounds = 10;
 
 
   run(func, rounds);
