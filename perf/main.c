@@ -88,7 +88,7 @@ static void run(void (*func)(), int rounds) {
   fclose(file);
   // TODO: display runtime statistics
 
-
+  system("python3 stat.py");
 
   free(elapsed);
 }
