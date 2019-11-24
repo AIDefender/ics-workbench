@@ -74,6 +74,11 @@ static void run(void (*func)(), int rounds) {
     uint64_t ed = gettime();
     elapsed[round] = ed - st;
   }
+  int i = 0;
+  for(;i<rounds;i++)
+  {
+    printf("%d\n",elapsed[i]);
+  }
 
   // TODO: display runtime statistics
 
