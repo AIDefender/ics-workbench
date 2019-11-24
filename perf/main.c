@@ -77,12 +77,15 @@ static void run(void (*func)(), int rounds) {
     double ed = gettime();
     elapsed[round] = ed - st;
   }
+  FILE* file;
+  file = fopen("res","w");
+
   int i = 0;
   for(;i<rounds;i++)
   {
-    printf("%f\n",elapsed[i]);
+    fprintf("%f\n",elapsed[i]);
   }
-
+  fclose(file);
   // TODO: display runtime statistics
 
   free(elapsed);
