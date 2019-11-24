@@ -83,10 +83,12 @@ static void run(void (*func)(), int rounds) {
   int i = 0;
   for(;i<rounds;i++)
   {
-    fprintf(file,"%f\n",elapsed[i]);
+    fprintf(file,"%f\n",elapsed[i]*1000);
   }
   fclose(file);
   // TODO: display runtime statistics
+
+
 
   free(elapsed);
 }
