@@ -11,7 +11,7 @@
 PROGRAMS(DECL)
 
 static void run(void (*func)(), int rounds);
-static uint64_t gettime();
+static double gettime();
 static void (*lookup(const char *fn))();
 
 int main(int argc, char **argv) {
@@ -39,9 +39,12 @@ int main(int argc, char **argv) {
   run(func, rounds);
 }
 
-static uint64_t gettime() {
+static double gettime() {
+  clock_t t;
+  t = clock();
+  return ((double) t) / CLOCKS_PER_SEC;
   // TODO: implement me!
-  return time(NULL);
+  // return time(NULL);
 }
 
 static void (*lookup(const char *fn))() {
@@ -62,22 +65,22 @@ static void (*lookup(const char *fn))() {
 }
 
 static void run(void (*func)(), int rounds) {
-  uint64_t *elapsed = malloc(sizeof(uint64_t) * rounds);
+  double *elapsed = malloc(sizeof(uint64_t) * rounds);
   if (!elapsed) {
     perror("elapsed");
     return;
   }
 
   for (int round = 0; round < rounds; round++) {
-    uint64_t st = gettime();
+    double st = gettime();
     func();
-    uint64_t ed = gettime();
+    double ed = gettime();
     elapsed[round] = ed - st;
   }
   int i = 0;
   for(;i<rounds;i++)
   {
-    printf("%ld\n",elapsed[i]);
+    printf("%f\n",elapsed[i]);
   }
 
   // TODO: display runtime statistics
