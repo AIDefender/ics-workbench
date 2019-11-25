@@ -6,7 +6,7 @@
 
 static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
-int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
+void multimod_p2(void) {
 
   int64_t a = gen_rand_64();
   int64_t b = gen_rand_64();
