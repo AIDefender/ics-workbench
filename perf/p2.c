@@ -3,6 +3,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 static int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
