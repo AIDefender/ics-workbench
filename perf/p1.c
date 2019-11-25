@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdint.h>
 
 // Uncomment to enable test.
 static int64_t gen_rand_64();
@@ -10,11 +11,11 @@ static int64_t compute_res(int64_t,int64_t,int64_t);
 static int* gen_bits(int64_t);
 void multimod_p1() {
 
-  uint64_t a = gen_rand_64();
-  uint64_t b = gen_rand_64();
-  uint64_t m = gen_rand_64();
+  int64_t a = gen_rand_64();
+  int64_t b = gen_rand_64();
+  int64_t m = gen_rand_64();
 
-  volatile compute_res(a,b,m);
+  volatile int64_t res = compute_res(a,b,m);
 
 }
 int64_t gen_rand_64()
