@@ -58,7 +58,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       } 
       if (b>m)
       {
-        b = (b % m) << 1; //坯能溢出!
+        b = (b % m) << 1; 
       }  
       else 
       {
@@ -73,7 +73,6 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       }
       assert(b>=0);
       a >>= 1; 
-      // printf("%ld %ld %ld %ld\n",res,a,b,m);
       assert(res>=0);
   } 
   return (int64_t )res % m;

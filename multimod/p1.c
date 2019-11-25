@@ -4,6 +4,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
+
+// Uncomment to enable test.
+#define TIMING 
+
 #ifdef TIMING
 static int64_t gen_rand_64();
 #endif
