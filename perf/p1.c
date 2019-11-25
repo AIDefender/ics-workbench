@@ -2,7 +2,6 @@
 #include <math.h> 
 #include <time.h>
 #include <stdlib.h>
-#include <assert.h>
 #include <stdint.h>
 
 // Uncomment to enable test.
@@ -21,7 +20,6 @@ void multimod_p1() {
 }
 int64_t gen_rand_64()
 {
-  //1
   int i = 0;
   int64_t res=rand()%2;
   for(;i<62;i++)
