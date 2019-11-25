@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // Uncomment to enable timing 
-#define TIMING
+// #define TIMING
 
 
 #ifdef TIMING
