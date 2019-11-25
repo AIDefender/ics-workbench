@@ -31,6 +31,7 @@ int64_t gen_rand_64()
   }
   return res;
 }
+int64_t compute_res_1(int64_t a, int64_t b, int64_t m);
 
 void multimod_p1() {
 
