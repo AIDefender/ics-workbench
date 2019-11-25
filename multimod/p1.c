@@ -6,7 +6,7 @@
 #include <assert.h>
 
 // Uncomment to enable test.
-#define TIMING 
+// #define TIMING 
 
 #ifdef TIMING
 static int64_t gen_rand_64();
