@@ -34,9 +34,9 @@ int64_t gen_rand_64()
 
 void multimod_p1() {
 
-  a = gen_rand_64();
-  b = gen_rand_64();
-  m = gen_rand_64();
+  int64_t a = gen_rand_64();
+  int64_t b = gen_rand_64();
+  int64_t m = gen_rand_64();
 
   volatile int64_t res = compute_res_1(a,b,m);
 }
