@@ -4,10 +4,14 @@
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
+#ifdef TIMING
 static int64_t gen_rand_64();
+#endif
 static int64_t compute_res(int64_t,int64_t,int64_t);
 static int* gen_bits(int64_t);
 int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
+
+#ifdef TIMING
   clock_t start=clock(), diff;
   int i;
   for(i=0;i<10000;i++)
@@ -23,9 +27,12 @@ int64_t multimod_p1(int64_t a, int64_t b, int64_t m) {
   diff = clock()-start;
   int msec = diff * 1000 / CLOCKS_PER_SEC;
   printf("time=%dms\n",msec);
+#endif
 
   return compute_res(a,b,m);
+
 }
+#ifdef TIMING 
 int64_t gen_rand_64()
 {
   //1
@@ -38,6 +45,7 @@ int64_t gen_rand_64()
   }
   return res;
 }
+#endif
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   int *a_bits = gen_bits(a);
@@ -49,33 +57,24 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
   {
     for(j=0;j<63;j++)
     {
-      // int64_t am=a_bits[i]*((1l<<i) %m);
-      // int64_t bm=b_bits[j]*((1l<<j) %m);
-      // printf("%d %ld %ld %ld\n",j,am,bm,m);
-      // ! bm可能超过32位,导致溢出
-      // ! 说明这个方法根本上是错误的
-      // ! 注意排查的方式.我:痛苦的debug;其实可以在代数层面多思考
-      // !! 可以直接不停×2取模
-      // res+=(am*bm)%m;
-      // res=res%m;
+
       if (b_bits[j]==0)
       {
         continue;
       }
       int k;
-      // int64_t am=(a_bits[i]<<i)%m;
       int64_t am=a_bits[i];
       for(k=0;k<i+j;k++)
       {
         if (am>m)
         {
-          am = (am % m) << 1; //可能溢出!
+          am = (am % m) << 1; 
         }  
         else 
         {
           if (am>(m>>1))
           {
-            am=(am-m+am)%m;// ! 最精髓的一行,精确操控确保不溢出
+            am=(am-m+am)%m;
           }
           else 
           {
@@ -83,19 +82,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
           }
         }
       }
-
-      // printf("am:%ld\n",am);//!这一步可能就有问题
-      // if (j==0)
-      // {
-      //   res = (res+am)%m;
-      //   continue; 
-      // }
-      // for(k=0;k<j;k++)
-      // {
-      //   am = (am << 1)%m;
-      // }
       res = (res%m+am%m)%m;
-      // assert(res>>63==0);
     }
   }
   
@@ -111,12 +98,6 @@ int* gen_bits(int64_t a){
     a >>= 1;
     i++;
   }
-  // int ii=0;
-  // for(;ii<63;ii++)
-  // {
-  //   printf("%d",bits[62-ii]);
-  // }
-  // printf("\n");
   return bits;
 }
 

@@ -4,9 +4,12 @@
 #include <time.h>
 #include <assert.h>
 #include <stdlib.h>
+#ifdef TIMING
 static int64_t gen_rand_64();
+#endif
 static int64_t compute_res(int64_t,int64_t,int64_t);
 int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
+#ifdef TIMING
   clock_t start=clock(), diff;
   int i;
   for(i=0;i<10000;i++)
@@ -25,8 +28,10 @@ int64_t multimod_p2(int64_t a, int64_t b, int64_t m) {
   diff = clock()-start;
   int msec = diff * 1000 / CLOCKS_PER_SEC;
   printf("time=%dms\n",msec); 
+#endif
   return compute_res(a,b,m);
 }
+#ifdef TIMING
 int64_t gen_rand_64()
 {
   int i = 0;
@@ -38,6 +43,7 @@ int64_t gen_rand_64()
   }
   return res;
 }
+#endif
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   uint64_t res=0;
@@ -52,7 +58,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
       } 
       if (b>m)
       {
-        b = (b % m) << 1; //可能溢出!
+        b = (b % m) << 1; //坯能溢出!
       }  
       else 
       {
