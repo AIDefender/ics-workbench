@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "util.h"
+#define SMALLER_NUM
 #ifdef WRITE_FILE
 int64_t gen_rand_64(int* num_1, int* hi_1)
 {
@@ -14,7 +15,11 @@ int64_t gen_rand_64(int* num_1, int* hi_1)
   for(;i<62;i++)
   {
     res <<= 1;
+#ifdef SMALLER_NUM
+    int num_gen = rand()%(i/10+2);
+#else
     int num_gen = rand()%2;
+#endif
     if (num_gen){
       (*num_1)++;
       (*hi_1) = i+1;
