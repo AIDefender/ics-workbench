@@ -1,3 +1,4 @@
+#include "util.h"
 int64_t gen_rand_64()
 {
   int i = 0;
