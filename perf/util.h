@@ -28,7 +28,7 @@
         fclose(file); \
     }
 
-int64_t gen_rand_64(int*);
+int64_t gen_rand_64(int*,int*);
 #else
 #define GEN_FUNC(x) \
     void multimod_p##x(void) { \
