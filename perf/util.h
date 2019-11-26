@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-// #define WRITE_FILE
+#define WRITE_FILE
 
 #ifdef WRITE_FILE
 #define GEN_FUNC(x) \
