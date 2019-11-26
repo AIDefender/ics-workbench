@@ -91,6 +91,7 @@ static void run(void (*func)(), int rounds) {
   system("python3 stat.py");
   system("rm res");
   system("rm num_1");
+  system("rm hi_1");
 
   free(elapsed);
 }
