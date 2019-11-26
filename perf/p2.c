@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-static int64_t gen_rand_64();
+int64_t gen_rand_64();
 static int64_t compute_res(int64_t,int64_t,int64_t);
 void multimod_p2(void) {
 
@@ -17,17 +17,7 @@ void multimod_p2(void) {
   res = compute_res(a,b,m);
 
 }
-int64_t gen_rand_64()
-{
-  int i = 0;
-  int64_t res=rand()%2;
-  for(;i<62;i++)
-  {
-    res <<= 1;
-    res+=rand()%2;
-  }
-  return res;
-}
+
 int64_t compute_res(int64_t a, int64_t b, int64_t m)
 {
   uint64_t res=0;
