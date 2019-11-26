@@ -89,7 +89,8 @@ static void run(void (*func)(), int rounds) {
   // TODO: display runtime statistics
 
   system("python3 stat.py");
-  // system("rm res");
+  system("rm res");
+  system("rm num_1");
 
   free(elapsed);
 }
