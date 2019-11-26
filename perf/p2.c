@@ -33,9 +33,7 @@ int64_t compute_res(int64_t a, int64_t b, int64_t m)
           b<<=1;
         }
       }
-      assert(b>=0);
       a >>= 1; 
-      assert(res>=0);
   } 
   return (int64_t )res % m;
 
