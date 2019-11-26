@@ -24,7 +24,7 @@ int64_t gen_rand_64(int* num_1, int* hi_1)
       (*num_1)++;
       (*hi_1) = i+1;
     } 
-    res+=num_gen;
+    res+=1;
   }
   return res;
 }
