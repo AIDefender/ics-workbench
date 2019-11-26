@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "util.h"
 static int64_t compute_res(int64_t,int64_t,int64_t);
 
 void multimod_p3(void) {
