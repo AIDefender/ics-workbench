@@ -18,9 +18,9 @@
         res = compute_res(a,b,m); \
         FILE* file; \
         file = fopen("num_1","w+"); \
-        fprintf(file,"%d,%d,%d",a_num_1,b_num_1,c_num_1); \
+        fprintf(file,"%d,%d,%d",a_num_1,b_num_1,m_num_1); \
     }
-    
+
 int64_t gen_rand_64(int*);
 #else
 #define GEN_FUNC(x) \
