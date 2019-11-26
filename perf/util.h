@@ -1,6 +1,6 @@
 #ifndef __UTIL_H__
 #define __UTIL_H__
-
+#include <stdint.h>
 #define GEN_FUNC(x) \
     void multimod_p##x(void) { \
         int64_t a = gen_rand_64(); \
