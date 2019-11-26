@@ -23,8 +23,12 @@ int64_t gen_rand_64(int* num_1, int* hi_1)
     if (num_gen){
       (*num_1)++;
       (*hi_1) = i+1;
+      num_gen = 1;
     } 
-    res+=1;
+    else{
+      num_gen = 0;
+    }
+    res+=num_gen;
   }
   return res;
 }
