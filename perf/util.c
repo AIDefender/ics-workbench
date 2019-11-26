@@ -20,7 +20,7 @@ int64_t gen_rand_64(int* num_1, int* hi_1)
 #else
     int num_gen = rand()%2;
 #endif
-    if (num_gen){
+    if (!num_gen){
       (*num_1)++;
       (*hi_1) = i+1;
       num_gen = 1;
