@@ -17,7 +17,7 @@
         static volatile int64_t res __attribute__((used)) = 0; \
         res = compute_res(a,b,m); \
         FILE* file; \
-        file = fopen("num_1","w+"); \
+        file = fopen("num_1","a"); \
         fprintf(file,"%d,%d,%d\n",a_num_1,b_num_1,m_num_1); \
         fclose(file); \
     }
