@@ -32,7 +32,12 @@ int main(int argc, char **argv) {
     {
       i++;
       rounds = atoi(argv[i]);
-      printf("%d\n",rounds);
+      // printf("%d\n",rounds);
+      if (rounds <= 0)
+      {
+        printf("Invalid rounds!\n");
+        return -1;
+      }
     }
     else 
     {
