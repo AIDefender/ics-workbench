@@ -20,6 +20,11 @@ int main(int argc, char **argv) {
   int rounds = 1;
   int i;
   char func_name[20];
+  if (argc > 4)
+  {
+    printf("Too many arguments!\n")
+    return -1;
+  }
   for(i=1;i<argc;i++)
   {
     // printf("%s\n",argv[i]);
