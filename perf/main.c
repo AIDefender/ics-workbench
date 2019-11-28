@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
   char func_name[20];
   if (argc > 4)
   {
-    printf("Too many arguments!\n")
+    printf("Too many arguments!\n");
     return -1;
   }
   for(i=1;i<argc;i++)
