@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
     {
       i++;
       rounds = atoi(argv[i]);
+      printf("%d\n",rounds);
     }
     else 
     {
