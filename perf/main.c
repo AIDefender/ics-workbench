@@ -14,12 +14,14 @@ static void run(void (*func)(), int rounds);
 static double gettime();
 static void (*lookup(const char *fn))();
 
+static char func_name[20];
+
 int main(int argc, char **argv) {
   // TODO: parse arguments: set @func and @rounds
   // printf("%d\n",argc);
   int rounds = 1;
   int i;
-  char func_name[20];
+  // char func_name[20];
   if (argc > 4)
   {
     printf("Too many arguments!\n");
@@ -98,8 +100,9 @@ static void run(void (*func)(), int rounds) {
   }
   fclose(file);
   // TODO: display runtime statistics
-
-  system("python3 stat.py");
+  char buf[100];
+  sprintf(buf,"python3 stat.py %s",func_name);
+  system(buf);
   system("rm res > /dev/null 2>&1");
   system("rm num_1 > /dev/null 2>&1");
   system("rm hi_1 > /dev/null 2>&1");
