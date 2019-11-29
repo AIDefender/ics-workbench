@@ -6,5 +6,6 @@
   _(multimod_p1) \
   _(multimod_p2) \
   _(multimod_p3) \
+  _(multimod_p4) \
 
 #define LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))
