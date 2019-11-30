@@ -2,11 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 # from scipy.stats import norm
 import numpy as np 
+import sys  
+func_name = sys.argv[1]
 data = pd.read_csv("./res",header=None)
 data.columns = ["Time(ms)"]
 print(data.describe())
 plt.plot(data)
-plt.title("Performance analysis")
+plt.title("Performance analysis of "+func_name)
 plt.xlabel("Index")
 plt.ylabel("Running Time(ms)")
 plt.show()
@@ -40,7 +42,7 @@ plt.scatter(list(a_num_1.keys()),list(a_num_1.values()),label = "num of binary 1
 plt.scatter(list(b_num_1.keys()),list(b_num_1.values()),label = "num of binary 1 in b")
 plt.scatter(list(c_num_1.keys()),list(c_num_1.values()),label = "num of binary 1 in m")
 plt.legend(loc="lower right")
-plt.title("Running time and num of binary 1")
+plt.title("Running time and num of binary 1@ "+func_name)
 plt.xlabel("num of 1")
 plt.ylabel("Running time")
 plt.show()
@@ -65,7 +67,7 @@ plt.scatter(list(a_hi_1.keys()),list(a_hi_1.values()),label = "hi of binary 1 in
 plt.scatter(list(b_hi_1.keys()),list(b_hi_1.values()),label = "hi of binary 1 in b")
 plt.scatter(list(c_hi_1.keys()),list(c_hi_1.values()),label = "hi of binary 1 in m")
 plt.legend(loc="lower right")
-plt.title("Running time and hi of binary 1")
+plt.title("Running time and hi of binary 1@ "+func_name)
 plt.xlabel("hi of 1")
 plt.ylabel("Running time")
 plt.show()
