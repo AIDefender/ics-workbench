@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define WRITE_FILE
+// #define WRITE_FILE
 // #define FIX_OTHERS
 
 #ifdef WRITE_FILE
