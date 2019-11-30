@@ -16,12 +16,12 @@
         int m_num_1 = 0; \
         int m_hi_1 = 0; \
         int64_t a = gen_rand_64(&a_num_1,&a_hi_1); \
-        #ifdef FIX_OTHERS \
+#ifdef FIX_OTHERS 
         int64_t b = 0xF0F0F0F0F0F0F0F0; \
         int64_t m = 0xF0F0F0F0F0F0F0F0; \
-        #else \
+#else 
         int64_t b = gen_rand_64(&b_num_1,&b_hi_1); \
-        #endif \
+#endif
         int64_t m = gen_rand_64(&m_num_1,&m_hi_1); \
         static volatile int64_t res __attribute__((used)) = 0; \
         res = compute_res(a,b,m); \
