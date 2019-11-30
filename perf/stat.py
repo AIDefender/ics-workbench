@@ -1,12 +1,38 @@
 import pandas as pd
 import matplotlib.pyplot as plt 
-# from scipy.stats import norm
+from scipy.stats import shapiro,kstest
 import numpy as np 
 import sys  
 func_name = sys.argv[1]
 data = pd.read_csv("./res",header=None)
 data.columns = ["Time(ms)"]
 print(data.describe())
+with open("./res","r") as f:
+    res = np.loadtxt(f,dtype = float)
+data_mu = np.mean(res)
+data_std = np.std(res)
+time_count = []
+cnt_interval = 100
+for interval in np.linspace(data_mu-3*data_std,data_mu+3*data_std,cnt_interval):
+    count = 0
+    for i in res:
+        if interval <= i < interval + 6*data_std/cnt_interval:
+            count+=1
+    time_count.append(count)
+
+
+print("p value of Shapiro-Wilk test:",shapiro(time_count)[1])
+print("p value of kstest:",kstest(time_count,'norm')[1])
+plt.bar(list(range(cnt_interval)),time_count)
+plt.title("Running time distribution of "+func_name)
+plt.xlabel("Counts")
+plt.ylabel("Index")
+plt.show()
+
+
+
+
+
 plt.plot(data)
 plt.title("Performance analysis of "+func_name)
 plt.xlabel("Index")
