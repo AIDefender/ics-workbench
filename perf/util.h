@@ -21,8 +21,8 @@
         int64_t m = 0xF0F0F0F0F0F0F0F0; \
 #else 
         int64_t b = gen_rand_64(&b_num_1,&b_hi_1); \
-#endif
         int64_t m = gen_rand_64(&m_num_1,&m_hi_1); \
+#endif
         static volatile int64_t res __attribute__((used)) = 0; \
         res = compute_res(a,b,m); \
         FILE* file; \
