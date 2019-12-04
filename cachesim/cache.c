@@ -18,6 +18,10 @@ void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
 }
 
 void init_cache(int total_size_width, int associativity_width) {
+
+  
+
+
 }
 
 void display_statistic(void) {
