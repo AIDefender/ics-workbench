@@ -16,6 +16,11 @@
 typedef uint8_t bool;
 #define true 1
 #define false 0
+#define VALID 1 
+#define INVALID 0 
+#define CLEAN 1
+#define DIRTY 0
+#define MEM_WIDTH 25 // According to line 12
 
 void cycle_increase(int n);
 
