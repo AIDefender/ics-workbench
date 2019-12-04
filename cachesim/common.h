@@ -27,8 +27,8 @@ typedef uint64_t cchent; // cache entry
 #define CLEAN 1
 #define DIRTY 0
 #define data(entry) (entry & mask_with_len(32))
-#define valid_bit(entry) (entry >> 63);
-#define write_bit(entry) (entry >> 62 & 1);
+#define valid_bit(entry) (entry >> 63)
+#define write_bit(entry) (entry >> 62 & 1)
 #define tag(entry) ((entry >> 32) & mask_with_len(tag_width))
 
 
