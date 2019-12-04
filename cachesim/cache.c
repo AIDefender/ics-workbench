@@ -21,8 +21,12 @@ void init_cache(int total_size_width, int associativity_width) {
 
    typedef struct cache
    {
-     int a;
-   };
+     uint32_t valid_bit : 1;
+     uint32_t write_bit : 1;
+     uint32_t tag : MEM_WIDTH + associativity_width - total_size_width;
+     uint32_t index : total_size_width - BLOCK_WIDTH - associativity_width;
+     uint32_t int_addr : BLOCK_WIDTH;
+   } cache_entry;
    
 
 

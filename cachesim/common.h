@@ -20,7 +20,7 @@ typedef uint8_t bool;
 #define INVALID 0 
 #define CLEAN 1
 #define DIRTY 0
-#define MEM_WIDTH 25 // According to line 12
+#define MEM_WIDTH 20 // According to line 12
 
 void cycle_increase(int n);
 
