@@ -33,7 +33,6 @@ void query_cache_hit(uintptr_t addr, bool* success)
   print_bi(31,4);
   print_bi(31,3);
 
-  assert(0);  
   // int i;
   // for (i = )
 }
