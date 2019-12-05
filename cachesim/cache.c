@@ -18,6 +18,7 @@ uint32_t cache_read(uintptr_t addr) {
 }
 
 void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
+
 }
 
 void init_cache(int total_size_width, int associativity_width) {
@@ -39,6 +40,11 @@ void init_cache(int total_size_width, int associativity_width) {
   tag_with = 20 + associativity_width - total_size_width;
   uint32_t row_cache = exp2(total_size_width-BLOCK_WIDTH);
   cache = (cchent*)malloc(sizeof(cchent)*row_cache);
+  int i = 0;
+  for(i = 0; i < row_cache; i++)
+  {
+    cache[row_cache].valid_bit = 0;
+  }
 }
 
 void display_statistic(void) {
