@@ -16,12 +16,12 @@ void query_cache_hit(uintptr_t addr, bool* success)
 
 uint32_t query_cache_addr(uintptr_t addr)
 {
-
+  return 0;
 }
 
 void load_cache(uintptr_t addr)
 {
-  
+
 }
 
 void cycle_increase(int n) { cycle_cnt += n; }
