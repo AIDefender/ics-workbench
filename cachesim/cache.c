@@ -14,7 +14,7 @@ void print_bi(uint32_t num, int width)
   int i;
   for(i = width-1; i >= 0; i--)
   {
-    if (num / exp2(i))
+    if ((num / exp2(i))&1)
     {
       printf("1");
     }
@@ -29,8 +29,9 @@ void print_bi(uint32_t num, int width)
 
 void query_cache_hit(uintptr_t addr, bool* success)
 {
-  print_bi(addr,20);
+  print_bi(addr,25);
   print_bi(addr,32);
+  printf("\n");
   // int i;
   // for (i = )
 }
