@@ -9,9 +9,33 @@ void mem_write(uintptr_t block_num, const uint8_t *buf);
 
 static uint64_t cycle_cnt = 0;
 
+void print_bi(uint32_t num, int width)
+{
+  int i;
+  for(i = width-1; i >= 0; i++)
+  {
+    if (num / exp2(i))
+    {
+      printf("1");
+    }
+    else 
+    {
+      printf("0");
+    }
+    num %= exp2(i);
+  }
+  printf("\n");
+}
+
 void query_cache_hit(uintptr_t addr, bool* success)
 {
+  print_bi(31,5);
+  print_bi(31,4);
+  print_bi(31,3);
 
+
+  // int i;
+  // for (i = )
 }
 
 uint32_t query_cache_addr(uintptr_t addr)
@@ -66,7 +90,7 @@ void init_cache(int total_size_width, int associativity_width) {
    
   */
   assert(associativity_width <= total_size_width);
-  tag_with = 20 + associativity_width - total_size_width;
+  tag_width = 20 + associativity_width - total_size_width;
   uint32_t row_cache = exp2(total_size_width-BLOCK_WIDTH);
   cache = (cchent*)malloc(sizeof(cchent)*row_cache);
   int i = 0;
