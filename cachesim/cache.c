@@ -12,7 +12,7 @@ static uint64_t cycle_cnt = 0;
 void print_bi(uint32_t num, int width)
 {
   int i;
-  for(i = width-1; i >= 0; i++)
+  for(i = width-1; i >= 0; i--)
   {
     if (num / exp2(i))
     {
@@ -33,7 +33,7 @@ void query_cache_hit(uintptr_t addr, bool* success)
   print_bi(31,4);
   print_bi(31,3);
 
-
+  assert(0);  
   // int i;
   // for (i = )
 }
