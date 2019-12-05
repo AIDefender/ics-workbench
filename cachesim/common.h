@@ -20,16 +20,30 @@ typedef uint8_t bool;
 #define false 0
 
 // ---------Cache-------------
+
+typedef struct 
+{
+    struct 
+    {
+        uint32_t valid_bit : 1;
+        uint32_t write_bit : 1;
+    };
+    uint32_t tag;
+    uint8_t data[BLOCK_SIZE];
+} cchent;
+
+
+
 uint32_t tag_with;
-typedef uint64_t cchent; // cache entry
+// typedef uint64_t cchent; // cache entry
 #define VALID 1 
 #define INVALID 0 
 #define CLEAN 1
 #define DIRTY 0
-#define data(entry) (entry & mask_with_len(32))
-#define valid_bit(entry) (entry >> 63)
-#define write_bit(entry) (entry >> 62 & 1)
-#define tag(entry) ((entry >> 32) & mask_with_len(tag_width))
+// #define data(entry) (entry & mask_with_len(32)) // ! need further adjustment!
+// #define valid_bit(entry) (entry >> 63)
+// #define write_bit(entry) (entry >> 62 & 1)
+// #define tag(entry) ((entry >> 32) & mask_with_len(tag_width))
 
 
 // ---------------------------

@@ -1,6 +1,9 @@
 #include "common.h"
 #include <inttypes.h>
 
+cchent* cache;
+
+
 void mem_read(uintptr_t block_num, uint8_t *buf);
 void mem_write(uintptr_t block_num, const uint8_t *buf);
 
@@ -34,6 +37,8 @@ void init_cache(int total_size_width, int associativity_width) {
   */
   assert(associativity_width <= total_size_width);
   tag_with = 20 + associativity_width - total_size_width;
+  uint32_t row_cache = exp2(total_size_width-BLOCK_WIDTH);
+  cache = (cchent*)malloc(sizeof(cchent)*row_cache);
 }
 
 void display_statistic(void) {
