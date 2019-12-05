@@ -32,8 +32,6 @@ typedef struct
     uint8_t data[BLOCK_SIZE];
 } cchent;
 
-
-
 uint32_t tag_with;
 // typedef uint64_t cchent; // cache entry
 #define VALID 1 
@@ -44,10 +42,10 @@ uint32_t tag_with;
 // #define valid_bit(entry) (entry >> 63)
 // #define write_bit(entry) (entry >> 62 & 1)
 // #define tag(entry) ((entry >> 32) & mask_with_len(tag_width))
-
-
 // ---------------------------
-
+// ----------Memory-----------
+#define block_addr(addr) addr & mask_with_len(BLOCK_WIDTH)
+// ---------------------------
 void cycle_increase(int n);
 
 #endif

@@ -9,11 +9,27 @@ void mem_write(uintptr_t block_num, const uint8_t *buf);
 
 static uint64_t cycle_cnt = 0;
 
+
+
 void cycle_increase(int n) { cycle_cnt += n; }
 
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
+  bool success = false;
+  query_cache_hit(addr,&success);
+  if (success)
+  {
+    return query_cache_addr(addr);
+  }
+  else 
+  {
+    load_cache(addr);
+    query_cache_hit(addr,&success);
+    assert(success);
+    return query_cache_addr(addr);
+  }
+  
   return 0;
 }
 
