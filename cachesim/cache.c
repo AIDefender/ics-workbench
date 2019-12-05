@@ -29,10 +29,8 @@ void print_bi(uint32_t num, int width)
 
 void query_cache_hit(uintptr_t addr, bool* success)
 {
-  print_bi(371,5);
-  print_bi(31,4);
-  print_bi(31,3);
-
+  print_bi(addr,20);
+  print_bi(addr,32);
   // int i;
   // for (i = )
 }
