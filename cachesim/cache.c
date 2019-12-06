@@ -8,6 +8,7 @@ void mem_read(uintptr_t block_num, uint8_t *buf);
 void mem_write(uintptr_t block_num, const uint8_t *buf);
 
 static uint64_t cycle_cnt = 0;
+// ----------------------util---------------------------
 
 void print_bi(uint32_t num, int width)
 {
@@ -26,9 +27,13 @@ void print_bi(uint32_t num, int width)
   }
   printf("\n");
 }
+
+// ----------------------read helper--------------------------
+
 uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
-  assert(0);
+  uint32_t* ret = cache_line + block_addr(mem_addr);
+  return *ret;
 }
 uint32_t query_cache_hit(uintptr_t addr, bool* success)
 {
@@ -43,7 +48,8 @@ uint32_t query_cache_hit(uintptr_t addr, bool* success)
       return cache2mem(addr,grp_queried_base[i].data);
     }
   }
-  return false;
+  *success = false;
+  return 0;
 }
 
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
@@ -73,6 +79,10 @@ void load_cache(uintptr_t addr)
   cpy_cache(addr,substi_cache_addr);
 }
 
+
+// ---------------------------write helper----------------------------
+
+// -------------------------------------------------------------------
 void cycle_increase(int n) { cycle_cnt += n; }
 
 // TODO: implement the following functions
