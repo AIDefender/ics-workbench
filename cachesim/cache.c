@@ -30,10 +30,12 @@ void print_bi(uint32_t num, int width)
 void query_cache_hit(uintptr_t addr, bool* success)
 {
   print_bi(addr,25);
-  print_bi(addr,32);
-  printf("\n");
+  // print_bi(addr,32);
+  // printf("\n");
   // int i;
   // for (i = )
+  print_bi(block_addr(addr),BLOCK_WIDTH);
+  print_bi(mem_tag(addr),13);
 }
 
 uint32_t query_cache_addr(uintptr_t addr)
