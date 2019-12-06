@@ -36,8 +36,8 @@ uint32_t asso_width;
 uint32_t row_cache;
 #define VALID 1 
 #define INVALID 0 
-#define CLEAN 1
-#define DIRTY 0
+#define DIRTY 1
+#define CLEAN 0
 #define grp_addr(index) (&(cache[index*exp2(asso_width)]))
 
 // ----------Memory-----------

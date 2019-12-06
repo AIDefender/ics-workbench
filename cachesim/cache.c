@@ -4,8 +4,6 @@
 
 cchent* cache;
 
-
-
 static uint64_t cycle_cnt = 0;
 
 void cycle_increase(int n) { cycle_cnt += n; }
@@ -14,7 +12,7 @@ void cycle_increase(int n) { cycle_cnt += n; }
 
 uint32_t cache_read(uintptr_t addr) {
   // show_cache(); 
-  uint32_t* data_addr = query_cache(addr);
+  uint32_t* data_addr = query_cache_addr(addr);
   
   if (data_addr)
   {
@@ -26,7 +24,7 @@ uint32_t cache_read(uintptr_t addr) {
     // printf("not in the cache\n");
     load_cache(addr);
     // show_cache();
-    data_addr = query_cache(addr);
+    data_addr = query_cache_addr(addr);
     assert(data_addr);
     // printf("Read Once!\n");
     return *data_addr;
@@ -37,20 +35,21 @@ uint32_t cache_read(uintptr_t addr) {
 
 void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
 
-  uint32_t* data_addr = query_cache(addr);
-  if (data_addr)
+  uint32_t* dump_addr = query_cache_addr(addr);
+  if (dump_addr)
   {
-    dump_cache(addr,data_addr,wmask);
-    return;
+    cchent* cache_entry = query_cache_entry(addr);
+    dump_cache(dump_addr,dump_entry,data,wmask);
   }
   else 
   {
     load_cache(addr);
-    data_addr = query_cache(addr);
-    assert(data_addr);
-    dump_cache(addr,data_addr,wmask);
+    dump_addr = query_cache_addr(addr);
+    assert(dump_addr);
+    cchent* cache_entry = query_cache_entry(addr);
+    dump_cache(dump_addr,dump_entry,data,wmask);
   }
-  
+  printf("mem addr %x written to cache.\n",addr);
 }
 
 void init_cache(int total_size_width, int associativity_width) {

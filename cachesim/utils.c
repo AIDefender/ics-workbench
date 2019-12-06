@@ -35,15 +35,13 @@ void show_cache()
   }
 }
 
-// ----------------------read helper--------------------------
-
 uint32_t* cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
   uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
   // printf("ret:%x\n",*ret);  
   return ret;
 }
-uint32_t* query_cache(uintptr_t addr)
+uint32_t* query_cache_addr(uintptr_t addr)
 {
   /*
     query cache with mem address "addr".
@@ -57,6 +55,19 @@ uint32_t* query_cache(uintptr_t addr)
     if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
     {
       return cache2mem(addr,grp_queried_base[i].data);
+    }
+  }
+  return NULL;
+}
+cchent* query_cache_entry(uintptr_t addr)
+{
+	cchent* grp_queried_base = grp_addr(mem_index(addr));
+  int i;
+  for(i = 0; i < exp2(asso_width); i++)
+  {
+    if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
+    {
+      return grp_queried_base+i;
     }
   }
   return NULL;
@@ -88,7 +99,9 @@ void load_cache(uintptr_t addr)
   cchent* substi_cache_addr = substi_cache();
   cpy_cache(addr,substi_cache_addr);
 }
-void dump_cache(uintptr_t mem_addr, uint32_t* cache_addr, uint32_t wmask)
+void dump_cache(uint32_t* cache_addr, cchent* cache_entry, uint32_t data, uint32_t wmask)
 {
-    assert(0);
+	assert(cache_addr > cache_entry->data);
+  *cache_addr = (*cache_addr & ~wmask) | (data & wmask);
+	cache_entry->write_bit = DIRTY;
 }
