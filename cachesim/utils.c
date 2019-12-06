@@ -101,7 +101,7 @@ void load_cache(uintptr_t addr)
 }
 void dump_cache(uint32_t* cache_addr, cchent* cache_entry, uint32_t data, uint32_t wmask)
 {
-	assert(cache_addr > cache_entry->data);
+	assert(cache_addr > (uint32_t*)cache_entry->data);
   *cache_addr = (*cache_addr & ~wmask) | (data & wmask);
 	cache_entry->write_bit = DIRTY;
 }
