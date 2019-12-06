@@ -80,7 +80,7 @@ static void parse_args(int argc, char *argv[]) {
   int o;
   bool has_seed = false;
   char *p;
-  while ( (o = getopt(argc, argv, "tar:")) != -1) {
+  while ( (o = getopt(argc, argv, "-tar:")) != -1) {
     switch (o) {
       case 'r': seed = strtol(optarg, &p, 0);
                 if (!(*optarg != '\0' && *p =='\0')) {
