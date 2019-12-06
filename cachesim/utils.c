@@ -90,7 +90,7 @@ cchent* substi_cache(cchent* grp_base, uint32_t idx_of_grp)
 		row_substitued->write_bit = CLEAN;
 	}
 	row_substitued->valid_bit = INVALID;
-	
+	return row_substitued;
 }
 void load_cache(uintptr_t addr)
 {
