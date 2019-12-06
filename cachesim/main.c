@@ -15,7 +15,7 @@ static uint32_t seed;
 static char *tracefile;
 
 static void init_rand(uint32_t seed) {
-  printf("random seed = %u\n", seed);
+  // printf("random seed = %u\n", seed);
   srand(seed);
 }
 
