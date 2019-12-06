@@ -64,6 +64,7 @@ void load_cache(uintptr_t addr)
     if (grp_queried_base[i].valid_bit == INVALID)
     {
       cpy_cache(addr,grp_queried_base+i);
+      return;
     }
   }
   cchent* substi_cache_addr = substi_cache();
