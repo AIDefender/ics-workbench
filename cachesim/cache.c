@@ -125,7 +125,7 @@ uint32_t cache_read(uintptr_t addr) {
 }
 
 void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
-  
+  assert(0);
 }
 
 void init_cache(int total_size_width, int associativity_width) {
