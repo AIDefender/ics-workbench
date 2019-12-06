@@ -114,7 +114,7 @@ uint32_t cache_read(uintptr_t addr) {
   else 
   {
     load_cache(addr);
-    show_cache();
+    // show_cache();
     uint32_t ret = query_cache_hit(addr,&success);
     assert(success);
     printf("Read Once!\n");
