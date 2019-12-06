@@ -32,7 +32,7 @@ void print_bi(uint32_t num, int width)
 
 uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
-  uint32_t* ret = cache_line + block_addr(mem_addr);
+  uint32_t* ret = (uint32_t)(cache_line + block_addr(mem_addr));
   return *ret;
 }
 uint32_t query_cache_hit(uintptr_t addr, bool* success)
