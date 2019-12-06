@@ -39,7 +39,7 @@ void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
   if (dump_addr)
   {
     cchent* cache_entry = query_cache_entry(addr);
-    dump_cache(dump_addr,dump_entry,data,wmask);
+    dump_cache(dump_addr,cache_entry,data,wmask);
   }
   else 
   {
@@ -47,7 +47,7 @@ void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
     dump_addr = query_cache_addr(addr);
     assert(dump_addr);
     cchent* cache_entry = query_cache_entry(addr);
-    dump_cache(dump_addr,dump_entry,data,wmask);
+    dump_cache(dump_addr,cache_entry,data,wmask);
   }
   printf("mem addr %lx written to cache.\n",addr);
 }
