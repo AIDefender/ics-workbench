@@ -88,7 +88,7 @@ void load_cache(uintptr_t addr)
   cchent* substi_cache_addr = substi_cache();
   cpy_cache(addr,substi_cache_addr);
 }
-void dump_cache(uintptr_t mem_addr, uint32_t* cache_addr, uint32_t wmask);
+void dump_cache(uintptr_t mem_addr, uint32_t* cache_addr, uint32_t wmask)
 {
     assert(0);
 }
