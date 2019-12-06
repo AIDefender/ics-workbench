@@ -49,7 +49,7 @@ void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
     cchent* cache_entry = query_cache_entry(addr);
     dump_cache(dump_addr,dump_entry,data,wmask);
   }
-  printf("mem addr %x written to cache.\n",addr);
+  printf("mem addr %lx written to cache.\n",addr);
 }
 
 void init_cache(int total_size_width, int associativity_width) {
