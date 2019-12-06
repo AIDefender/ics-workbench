@@ -1,0 +1,90 @@
+#include "util.h"
+void print_bi(uint32_t num, int width)
+{
+  int i;
+  for(i = width-1; i >= 0; i--)
+  {
+    if ((num / exp2(i))&1 )
+    {
+      printf("1");
+    }
+    else 
+    {
+      printf("0");
+    }
+    num %= exp2(i);
+  }
+  printf("\n");
+}
+void show_cache()
+{
+  int i = 0;
+  for (;i < row_cache; i++)
+  {
+    printf("line %d:   ",i);
+    int j = 0;
+    for(;j<BLOCK_SIZE;j++)
+    {
+      printf("%x",cache[i].data[j]);
+    }
+    printf("\n");
+  }
+}
+
+// ----------------------read helper--------------------------
+
+uint32_t* cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
+{
+  uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
+  // printf("ret:%x\n",*ret);  
+  return ret;
+}
+uint32_t* query_cache(uintptr_t addr)
+{
+  /*
+    query cache with mem address "addr".
+    If success, return pointer pointing to desired cache data addr
+    If fail, return Null.
+  */
+  cchent* grp_queried_base = grp_addr(mem_index(addr));
+  int i;
+  for(i = 0; i < exp2(asso_width); i++)
+  {
+    if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
+    {
+      return cache2mem(addr,grp_queried_base[i].data);
+    }
+  }
+  return NULL;
+}
+
+void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
+{
+  assert(cache_entry->valid_bit == INVALID);
+  mem_read(block_num(mem_addr),cache_entry->data);
+  cache_entry->valid_bit = VALID;
+  cache_entry->tag = mem_tag(mem_addr);
+}
+cchent* substi_cache()
+{
+  assert(0);
+}
+void load_cache(uintptr_t addr)
+{
+  cchent* grp_queried_base = grp_addr(mem_index(addr));
+  int i;
+  for (i = 0; i < exp2(asso_width); i++)
+  {
+    if (grp_queried_base[i].valid_bit == INVALID)
+    {
+      cpy_cache(addr,grp_queried_base+i);
+      return;
+    }
+  }
+  cchent* substi_cache_addr = substi_cache();
+  cpy_cache(addr,substi_cache_addr);
+}
+void dump_cache(uintptr_t mem_addr, uint32_t* cache_addr, uint32_t wmask);
+{
+    assert(0);
+}
