@@ -16,12 +16,12 @@ uint32_t cache_read(uintptr_t addr) {
   
   if (data_addr)
   {
-    // printf("in the cache\n");
+    printf("hit!\n");
     return *data_addr;
   }
   else 
   {
-    // printf("not in the cache\n");
+    printf("miss!\n");
     load_cache(addr);
     // show_cache();
     data_addr = query_cache_addr(addr);
