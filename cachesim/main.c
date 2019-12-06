@@ -130,6 +130,8 @@ void replay_trace(void) {
 }
 
 int main(int argc, char *argv[]) {
+  tot_sz_width = 14;
+  asso_width = 2;
   parse_args(argc, argv);
 
   init_rand(seed);

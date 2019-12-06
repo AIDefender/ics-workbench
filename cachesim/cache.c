@@ -71,7 +71,7 @@ void init_cache(int total_size_width, int associativity_width) {
   } cache_entry;
    
   */
- printf("%d,%d\n",total_size_width,associativity_width);
+  printf("%d,%d\n",total_size_width,associativity_width);
   assert(associativity_width <= total_size_width);
   tag_width = MEM_WIDTH + associativity_width - total_size_width;
   index_width = total_size_width - BLOCK_WIDTH - associativity_width;
