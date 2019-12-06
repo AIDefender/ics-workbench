@@ -16,12 +16,12 @@ uint32_t cache_read(uintptr_t addr) {
   
   if (data_addr)
   {
-    printf("hit!\n");
+    // printf("hit!\n");
     return *data_addr;
   }
   else 
   {
-    printf("miss!\n");
+    // printf("miss!\n");
     load_cache(addr);
     // show_cache();
     data_addr = query_cache_addr(addr);
@@ -69,6 +69,7 @@ void init_cache(int total_size_width, int associativity_width) {
   */
   assert(associativity_width <= total_size_width);
   tag_width = MEM_WIDTH + associativity_width - total_size_width;
+  index_width = total_size_width - BLOCK_WIDTH - associativity_width;
   asso_width = associativity_width;
   row_cache = exp2(total_size_width-BLOCK_WIDTH);
   cache = (cchent*)malloc(sizeof(cchent)*row_cache);

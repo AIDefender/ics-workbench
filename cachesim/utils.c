@@ -80,9 +80,16 @@ void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
   cache_entry->valid_bit = VALID;
   cache_entry->tag = mem_tag(mem_addr);
 }
-cchent* substi_cache()
+cchent* substi_cache(cchent* grp_base, uint32_t idx_of_grp)
 {
-	assert(0);
+	uint32_t substi_index = rand() % exp2(asso_width);
+	cchent* row_substitued = grp_base + substi_index;
+	if (row_substitued->write_bit == DIRTY)
+	{
+		mem_write((row_substitued->tag << index_width) | idx_of_grp, row_substitued->data);
+		row_substitued->write_bit = CLEAN;
+	}
+	row_substitued->valid_bit = INVALID;
 	
 }
 void load_cache(uintptr_t addr)
@@ -97,7 +104,7 @@ void load_cache(uintptr_t addr)
       return;
     }
   }
-  cchent* substi_cache_addr = substi_cache();
+  cchent* substi_cache_addr = substi_cache(grp_queried_base,mem_index(addr));
   cpy_cache(addr,substi_cache_addr);
 }
 void dump_cache(uint32_t* cache_addr, cchent* cache_entry, uint32_t data, uint32_t wmask)

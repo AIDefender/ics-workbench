@@ -9,10 +9,10 @@ void show_cache();
 uint32_t* cache2mem(uintptr_t mem_addr, uint8_t* cache_line);
 uint32_t* query_cache_addr(uintptr_t addr);
 cchent* query_cache_entry(uintptr_t addr);
-cchent* substi_cache();
 
 
 // ----------------------read---------------------------
+cchent* substi_cache(cchent* grp_base,uint32_t idx_of_grp);
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry);
 void load_cache(uintptr_t addr);
 

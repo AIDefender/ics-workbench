@@ -32,6 +32,7 @@ typedef struct
 } cchent;
 
 uint32_t tag_width;
+uint32_t index_width;
 uint32_t asso_width;
 uint32_t row_cache;
 #define VALID 1 
