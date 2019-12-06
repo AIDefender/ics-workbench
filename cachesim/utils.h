@@ -18,6 +18,6 @@ void load_cache(uintptr_t addr);
 
 
 // ---------------------write---------------------------
-void dump_cache(uint32_t*,cchent* uint32_t, uint32_t);
+void dump_cache(uint32_t*,cchent*, uint32_t, uint32_t);
 
 #endif
