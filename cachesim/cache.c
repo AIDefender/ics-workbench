@@ -27,13 +27,27 @@ void print_bi(uint32_t num, int width)
   }
   printf("\n");
 }
+void show_cache()
+{
+  int i = 0;
+  for (;i < row_cache; i++)
+  {
+    printf("line %d:   ",i);
+    int j = 0;
+    for(;j<BLOCK_SIZE;j++)
+    {
+      printf("%x",cache[i].data[j]);
+    }
+    printf("\n");
+  }
+}
 
 // ----------------------read helper--------------------------
 
 uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
   uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
-  printf("ret:%x\n",*ret);
+  printf("ret:%x\n",*ret);  
   return *ret;
 }
 uint32_t query_cache_hit(uintptr_t addr, bool* success)
@@ -89,6 +103,7 @@ void cycle_increase(int n) { cycle_cnt += n; }
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
+  show_cache()
   bool success = false;
   uint32_t ret = query_cache_hit(addr,&success);
   
@@ -99,8 +114,10 @@ uint32_t cache_read(uintptr_t addr) {
   else 
   {
     load_cache(addr);
+    show_cache();
     uint32_t ret = query_cache_hit(addr,&success);
     assert(success);
+    printf("Read Once!\n");
     return ret;
   }
   printf("Read Once!\n");
@@ -129,7 +146,7 @@ void init_cache(int total_size_width, int associativity_width) {
   assert(associativity_width <= total_size_width);
   tag_width = MEM_WIDTH + associativity_width - total_size_width;
   asso_width = associativity_width;
-  uint32_t row_cache = exp2(total_size_width-BLOCK_WIDTH);
+  row_cache = exp2(total_size_width-BLOCK_WIDTH);
   cache = (cchent*)malloc(sizeof(cchent)*row_cache);
   int i = 0;
   for(i = 0; i < row_cache; i++)

@@ -33,6 +33,7 @@ typedef struct
 
 uint32_t tag_width;
 uint32_t asso_width;
+uint32_t row_cache;
 #define VALID 1 
 #define INVALID 0 
 #define CLEAN 1
