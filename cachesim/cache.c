@@ -70,7 +70,7 @@ uint32_t query_cache_hit(uintptr_t addr, bool* success)
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
 {
   assert(cache_entry->valid_bit == INVALID);
-  mem_write(block_num(mem_addr),cache_entry->data);
+  mem_read(block_num(mem_addr),cache_entry->data);
   cache_entry->valid_bit = VALID;
   cache_entry->tag = mem_tag(mem_addr);
 }
@@ -103,7 +103,7 @@ void cycle_increase(int n) { cycle_cnt += n; }
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
-  show_cache();
+  show_cache(); 
   bool success = false;
   uint32_t ret = query_cache_hit(addr,&success);
   
