@@ -26,16 +26,21 @@ void print_bi(uint32_t num, int width)
   }
   printf("\n");
 }
-
-bool query_cache_hit(uintptr_t addr)
+uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
+  assert(0);
+}
+uint32_t query_cache_hit(uintptr_t addr, bool* success)
+{
+  assert(!success);
   cchent* grp_queried_base = grp_addr(mem_index(addr));
   int i;
   for(i = 0; i < exp2(asso_width); i++)
   {
     if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
     {
-      return true;
+      success = true;
+      return cache2mem(addr,grp_queried_base[i].data);
     }
   }
   return false;
@@ -78,16 +83,19 @@ void cycle_increase(int n) { cycle_cnt += n; }
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
+  bool success = false;
+  uint32_t ret = query_cache_hit(addr,&success);
   
-  if (query_cache_hit(addr))
+  if (success)
   {
-    return query_cache_addr(addr);
+    return ret;
   }
   else 
   {
     load_cache(addr);
-    assert(query_cache_hit(addr));
-    return query_cache_addr(addr);
+    uint32_t ret = query_cache_hit(addr,&success);
+    assert(success);
+    return ret;
   }
   printf("Read Once!\n");
   return 0;
