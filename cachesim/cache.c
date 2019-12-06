@@ -46,11 +46,6 @@ uint32_t query_cache_hit(uintptr_t addr, bool* success)
   return false;
 }
 
-uint32_t query_cache_addr(uintptr_t addr)
-{
-  assert(0);
-  return 0;
-}
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
 {
   assert(cache_entry->valid_bit == INVALID);
