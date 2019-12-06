@@ -87,5 +87,5 @@ void init_cache(int total_size_width, int associativity_width) {
 }
 
 void display_statistic(void) {
-  printf("hit num:%u, miss num:%u, hit rate:%f%%\n.",hit_num,miss_num,(double)hit_num/miss_num);
+  printf("hit num:%u, miss num:%u, hit rate:%f%%\n.",hit_num,miss_num,(double)hit_num/(hit_num+miss_num));
 }
