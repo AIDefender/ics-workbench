@@ -29,7 +29,7 @@ void print_bi(uint32_t num, int width)
 
 bool query_cache_hit(uintptr_t addr)
 {
-  cchent* grp_queried_base = &(cache[mem_index(addr)*exp2(asso_width)]);
+  cchent* grp_queried_base = grp_addr(mem_index(addr));
   int i;
   for(i = 0; i < exp2(asso_width); i++)
   {

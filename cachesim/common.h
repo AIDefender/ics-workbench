@@ -37,6 +37,7 @@ uint32_t asso_width;
 #define INVALID 0 
 #define CLEAN 1
 #define DIRTY 0
+#define grp_addr(index) (&(cache[index*exp2(asso_width)]))
 
 // ----------Memory-----------
 #define block_addr(addr) (addr & mask_with_len(BLOCK_WIDTH))
