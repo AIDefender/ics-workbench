@@ -1,4 +1,7 @@
 #include "utils.h"
+
+extern cchent* cache;
+
 void print_bi(uint32_t num, int width)
 {
   int i;
