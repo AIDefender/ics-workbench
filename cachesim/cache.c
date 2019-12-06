@@ -119,10 +119,10 @@ uint32_t cache_read(uintptr_t addr) {
     // show_cache();
     uint32_t ret = query_cache_hit(addr,&success);
     assert(success);
-    printf("Read Once!\n");
+    // printf("Read Once!\n");
     return ret;
   }
-  printf("Read Once!\n");
+  // printf("Read Once!\n");
   return 0;
 }
 
