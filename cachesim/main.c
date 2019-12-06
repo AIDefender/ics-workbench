@@ -90,8 +90,8 @@ static void parse_args(int argc, char *argv[]) {
                   has_seed = true;
                 }
                 break;
-      case 't': tot_sz_width = atoi(optarg);
-      case 'a': asso_width = atoi(optarg);
+      case 't': tot_sz_width = atoi(optarg); break;
+      case 'a': asso_width = atoi(optarg); break;
       case 1:
                 if (tracefile != NULL) printf("too much argument '%s', ignored\n", optarg);
                 else tracefile = optarg;
