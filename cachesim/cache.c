@@ -61,7 +61,7 @@ uint32_t cache_read(uintptr_t addr) {
   {
     load_cache(addr);
     query_cache_hit(addr,&success);
-    // assert(success);
+    assert(success);
     return query_cache_addr(addr);
   }
   

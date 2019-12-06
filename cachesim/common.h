@@ -12,7 +12,7 @@
 #define MEM_SIZE (1 << 25) // 1MB
 #define BLOCK_WIDTH  6  // 64B
 #define BLOCK_SIZE exp2(BLOCK_WIDTH)
-#define MEM_WIDTH 20 // According to line 12
+#define MEM_WIDTH 25
 
 typedef uint8_t bool;
 #define true 1
