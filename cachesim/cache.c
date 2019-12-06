@@ -51,7 +51,7 @@ void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
   mem_write(block_num(mem_addr),cache_entry->data);
   cache_entry->valid_bit = VALID;
 }
-void substi_cache()
+cchent* substi_cache()
 {
   assert(0);
 }
