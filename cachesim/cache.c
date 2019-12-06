@@ -47,7 +47,7 @@ void show_cache()
 uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
   uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
-  printf("ret:%x\n",*ret);  
+  // printf("ret:%x\n",*ret);  
   return *ret;
 }
 uint32_t query_cache_hit(uintptr_t addr, bool* success)
@@ -109,12 +109,12 @@ uint32_t cache_read(uintptr_t addr) {
   
   if (success)
   {
-    printf("in the cache\n");
+    // printf("in the cache\n");
     return ret;
   }
   else 
   {
-    printf("not in the cache\n");
+    // printf("not in the cache\n");
     load_cache(addr);
     // show_cache();
     uint32_t ret = query_cache_hit(addr,&success);
