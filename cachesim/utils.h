@@ -18,3 +18,5 @@ void load_cache(uintptr_t addr);
 
 // ---------------------write---------------------------
 void dump_cache(uintptr_t, uint32_t*, uint32_t);
+
+#endif
