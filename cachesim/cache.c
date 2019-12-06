@@ -3,6 +3,8 @@
 #include "utils.h"
 
 cchent* cache;
+static uint32_t miss_num;
+static uint32_t hit_num;
 
 static uint64_t cycle_cnt = 0;
 
@@ -17,10 +19,12 @@ uint32_t cache_read(uintptr_t addr) {
   if (data_addr)
   {
     // printf("hit!\n");
+    hit_num++;
     return *data_addr;
   }
   else 
   {
+    miss_num++;
     // printf("miss!\n");
     load_cache(addr);
     // show_cache();
@@ -76,9 +80,12 @@ void init_cache(int total_size_width, int associativity_width) {
   int i = 0;
   for(i = 0; i < row_cache; i++)
   {
-    cache[row_cache].valid_bit = 0;
+    cache[row_cache].valid_bit = INVALID;
   }
+  miss_num = 0;
+  hit_num = 0;
 }
 
 void display_statistic(void) {
+  printf("hit num:%u, miss num:%u, hit rate:%f%%\n.",hit_num,miss_num,(double)hit_num/miss_num);
 }
