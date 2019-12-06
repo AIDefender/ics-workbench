@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
   init_rand(seed);
   init_mem();
 
-  init_cache(14, 0);
+  init_cache(14, 14);
 
   replay_trace();
 
