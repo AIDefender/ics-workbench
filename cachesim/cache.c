@@ -109,10 +109,12 @@ uint32_t cache_read(uintptr_t addr) {
   
   if (success)
   {
+    printf("in the cache");
     return ret;
   }
   else 
   {
+    printf("not in the cache");
     load_cache(addr);
     // show_cache();
     uint32_t ret = query_cache_hit(addr,&success);
