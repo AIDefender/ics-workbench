@@ -29,6 +29,7 @@ void print_bi(uint32_t num, int width)
 }
 void show_cache()
 {
+  return;
   int i = 0;
   for (;i < row_cache; i++)
   {
