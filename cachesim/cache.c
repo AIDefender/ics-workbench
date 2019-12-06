@@ -43,6 +43,7 @@ bool query_cache_hit(uintptr_t addr)
 
 uint32_t query_cache_addr(uintptr_t addr)
 {
+  assert(0);
   return 0;
 }
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
@@ -50,6 +51,7 @@ void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
   assert(cache_entry->valid_bit == INVALID);
   mem_write(block_num(mem_addr),cache_entry->data);
   cache_entry->valid_bit = VALID;
+  cache_entry->tag = mem_tag(mem_addr);
 }
 cchent* substi_cache()
 {
@@ -87,6 +89,7 @@ uint32_t cache_read(uintptr_t addr) {
     assert(query_cache_hit(addr));
     return query_cache_addr(addr);
   }
+  printf("Read Once!\n");
   return 0;
 }
 
