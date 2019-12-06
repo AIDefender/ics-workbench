@@ -4,8 +4,7 @@
 
 cchent* cache;
 
-void mem_read(uintptr_t block_num, uint8_t *buf);
-void mem_write(uintptr_t block_num, const uint8_t *buf);
+
 
 static uint64_t cycle_cnt = 0;
 
