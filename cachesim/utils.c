@@ -82,7 +82,7 @@ void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
 }
 cchent* substi_cache()
 {
-	
+	assert(0);
 	
 }
 void load_cache(uintptr_t addr)
