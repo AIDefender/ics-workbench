@@ -35,8 +35,9 @@ void query_cache_hit(uintptr_t addr, bool* success)
   // int i;
   // for (i = )
   printf("tag width:%d\n",tag_width);  
-  print_bi(block_addr(addr),BLOCK_WIDTH);
-  print_bi(mem_tag(addr),13);
+  print_bi(block_addr(addr),25);
+  print_bi(mem_tag(addr),25);
+  print_bi(mem_index(addr),25);
 }
 
 uint32_t query_cache_addr(uintptr_t addr)
