@@ -121,7 +121,7 @@ void replay_trace(void) {
   struct trace t;
   while (fread(&t.t, sizeof(t.t), 1, fp) == 1) {
     // do not care data
-    trace_exec(&t, false);
+    trace_exec(&t, true);
   }
 
   pclose(fp);
