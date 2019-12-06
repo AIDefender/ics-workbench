@@ -43,6 +43,7 @@ uint32_t asso_width;
 #define block_addr(addr) (addr & mask_with_len(BLOCK_WIDTH))
 #define mem_tag(addr) ((addr >> (MEM_WIDTH-tag_width)) & mask_with_len(tag_width))
 #define mem_index(addr) ((addr >> BLOCK_WIDTH) & mask_with_len(MEM_WIDTH-tag_width-BLOCK_WIDTH))
+#define block_num(addr) (addr >> (BLOCK_WIDTH))
 // ---------------------------
 void cycle_increase(int n);
 

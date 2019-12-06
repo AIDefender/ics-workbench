@@ -45,10 +45,29 @@ uint32_t query_cache_addr(uintptr_t addr)
 {
   return 0;
 }
-
+void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
+{
+  assert(cache_entry->valid_bit == INVALID);
+  mem_write(block_num(mem_addr),cache_entry->data);
+  cache_entry->valid_bit = VALID;
+}
+void substi_cache()
+{
+  assert(0);
+}
 void load_cache(uintptr_t addr)
 {
-
+  cchent* grp_queried_base = grp_addr(mem_index(addr));
+  int i;
+  for (i = 0; i < exp2(asso_width); i++)
+  {
+    if (grp_queried_base[i].valid_bit == INVALID)
+    {
+      cpy_cache(addr,grp_queried_base+i);
+    }
+  }
+  cchent* substi_cache_addr = substi_cache();
+  cpy_cache(addr,substi_cache_addr);
 }
 
 void cycle_increase(int n) { cycle_cnt += n; }
