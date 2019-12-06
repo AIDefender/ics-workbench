@@ -29,7 +29,6 @@ void print_bi(uint32_t num, int width)
 }
 void show_cache()
 {
-  return;
   int i = 0;
   for (;i < row_cache; i++)
   {
@@ -104,7 +103,7 @@ void cycle_increase(int n) { cycle_cnt += n; }
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
-  show_cache(); 
+  // show_cache(); 
   bool success = false;
   uint32_t ret = query_cache_hit(addr,&success);
   
