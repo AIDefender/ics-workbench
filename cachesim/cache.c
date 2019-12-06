@@ -44,27 +44,24 @@ void show_cache()
 
 // ----------------------read helper--------------------------
 
-uint32_t cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
+uint32_t* cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
   uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
   // printf("ret:%x\n",*ret);  
-  return *ret;
+  return ret;
 }
-uint32_t query_cache_hit(uintptr_t addr, bool* success)
+uint32_t* query_cache(uintptr_t addr)
 {
-  assert(!(*success));
   cchent* grp_queried_base = grp_addr(mem_index(addr));
   int i;
   for(i = 0; i < exp2(asso_width); i++)
   {
     if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
     {
-      *success = true;
       return cache2mem(addr,grp_queried_base[i].data);
     }
   }
-  *success = false;
-  return 0;
+  return NULL;
 }
 
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
@@ -104,29 +101,32 @@ void cycle_increase(int n) { cycle_cnt += n; }
 
 uint32_t cache_read(uintptr_t addr) {
   // show_cache(); 
-  bool success = false;
-  uint32_t ret = query_cache_hit(addr,&success);
+  uint32_t* data_addr = query_cache(addr);
   
-  if (success)
+  if (data_addr)
   {
     // printf("in the cache\n");
-    return ret;
+    return *data_addr;
   }
   else 
   {
     // printf("not in the cache\n");
     load_cache(addr);
     // show_cache();
-    uint32_t ret = query_cache_hit(addr,&success);
-    assert(success);
+    data_addr = query_cache(addr);
+    assert(data_addr);
     // printf("Read Once!\n");
-    return ret;
+    return *data_addr;
   }
   // printf("Read Once!\n");
   return 0;
 }
 
 void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
+
+  
+  
+  
   assert(0);
 }
 
