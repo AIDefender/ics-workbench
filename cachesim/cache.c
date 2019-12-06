@@ -27,17 +27,18 @@ void print_bi(uint32_t num, int width)
   printf("\n");
 }
 
-void query_cache_hit(uintptr_t addr, bool* success)
+bool query_cache_hit(uintptr_t addr)
 {
-  print_bi(addr,25);
-  // print_bi(addr,32);
-  // printf("\n");
-  // int i;
-  // for (i = )
-  printf("tag width:%d\n",tag_width);  
-  print_bi(block_addr(addr),25);
-  print_bi(mem_tag(addr),25);
-  print_bi(mem_index(addr),25);
+  cchent* grp_queried_base = &(cache[mem_index(addr)*exp2(asso_width)]);
+  int i;
+  for(i = 0; i < exp2(asso_width); i++)
+  {
+    if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
+    {
+      return true;
+    }
+  }
+  return false;
 }
 
 uint32_t query_cache_addr(uintptr_t addr)
@@ -55,25 +56,22 @@ void cycle_increase(int n) { cycle_cnt += n; }
 // TODO: implement the following functions
 
 uint32_t cache_read(uintptr_t addr) {
-  bool success = false;
-  query_cache_hit(addr,&success);
-  if (success)
+  
+  if (query_cache_hit(addr))
   {
     return query_cache_addr(addr);
   }
   else 
   {
     load_cache(addr);
-    query_cache_hit(addr,&success);
-    assert(success);
+    assert(query_cache_hit(addr));
     return query_cache_addr(addr);
   }
-  
   return 0;
 }
 
 void cache_write(uintptr_t addr, uint32_t data, uint32_t wmask) {
-
+  
 }
 
 void init_cache(int total_size_width, int associativity_width) {
@@ -93,6 +91,7 @@ void init_cache(int total_size_width, int associativity_width) {
   */
   assert(associativity_width <= total_size_width);
   tag_width = MEM_WIDTH + associativity_width - total_size_width;
+  asso_width = associativity_width;
   uint32_t row_cache = exp2(total_size_width-BLOCK_WIDTH);
   cache = (cchent*)malloc(sizeof(cchent)*row_cache);
   int i = 0;
