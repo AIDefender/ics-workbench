@@ -80,7 +80,7 @@ static void parse_args(int argc, char *argv[]) {
   int o;
   bool has_seed = false;
   char *p;
-  while ( (o = getopt(argc, argv, "-r:")) != -1) {
+  while ( (o = getopt(argc, argv, "-tar:")) != -1) {
     switch (o) {
       case 'r': seed = strtol(optarg, &p, 0);
                 if (!(*optarg != '\0' && *p =='\0')) {
@@ -90,6 +90,8 @@ static void parse_args(int argc, char *argv[]) {
                   has_seed = true;
                 }
                 break;
+      case 't': tot_sz_width = strtod(optarg,&p,0);
+      case 'a': asso_width = strtod(optarg,&p,0);
       case 1:
                 if (tracefile != NULL) printf("too much argument '%s', ignored\n", optarg);
                 else tracefile = optarg;
