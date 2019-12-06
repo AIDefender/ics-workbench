@@ -41,7 +41,7 @@ uint32_t row_cache;
 #define grp_addr(index) (&(cache[index*exp2(asso_width)]))
 
 // ----------Memory-----------
-#define block_addr(addr) (addr & mask_with_len(BLOCK_WIDTH))
+#define block_addr(addr) (addr & mask_with_len(BLOCK_WIDTH) & ~0x3)
 #define mem_tag(addr) ((addr >> (MEM_WIDTH-tag_width)) & mask_with_len(tag_width))
 #define mem_index(addr) ((addr >> BLOCK_WIDTH) & mask_with_len(MEM_WIDTH-tag_width-BLOCK_WIDTH))
 #define block_num(addr) (addr >> (BLOCK_WIDTH))
