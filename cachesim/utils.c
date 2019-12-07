@@ -37,6 +37,7 @@ void show_cache()
 
 uint32_t* cache2mem(uintptr_t mem_addr, uint8_t* cache_line)
 {
+  cycle_increase(1);
   uint32_t* ret = (uint32_t*)(cache_line + block_addr(mem_addr));
   // printf("ret:%x\n",*ret);  
   return ret;
@@ -49,9 +50,11 @@ uint32_t* query_cache_addr(uintptr_t addr)
     If fail, return Null.
   */
   cchent* grp_queried_base = grp_addr(mem_index(addr));
+  cycle_increase(1);
   int i;
   for(i = 0; i < exp2(asso_width); i++)
   {
+    cycle_increase(1);
     if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
     {
       return cache2mem(addr,grp_queried_base[i].data);
@@ -62,9 +65,11 @@ uint32_t* query_cache_addr(uintptr_t addr)
 cchent* query_cache_entry(uintptr_t addr)
 {
 	cchent* grp_queried_base = grp_addr(mem_index(addr));
+  cycle_increase(1);
   int i;
   for(i = 0; i < exp2(asso_width); i++)
   {
+    cycle_increase(1);
     if ((grp_queried_base[i].valid_bit == VALID) && (grp_queried_base[i].tag == mem_tag(addr)) )
     {
       return grp_queried_base+i;
@@ -75,6 +80,7 @@ cchent* query_cache_entry(uintptr_t addr)
 
 void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
 {
+  cycle_increase(1);
   assert(cache_entry->valid_bit == INVALID);
   mem_read(block_num(mem_addr),cache_entry->data);
   cache_entry->valid_bit = VALID;
@@ -82,6 +88,7 @@ void cpy_cache(uintptr_t mem_addr, cchent* cache_entry)
 }
 cchent* substi_cache(cchent* grp_base, uint32_t idx_of_grp)
 {
+  cycle_increase(3);
 	uint32_t substi_index = rand() % exp2(asso_width);
 	cchent* row_substitued = grp_base + substi_index;
 	if (row_substitued->write_bit == DIRTY)
@@ -94,10 +101,12 @@ cchent* substi_cache(cchent* grp_base, uint32_t idx_of_grp)
 }
 void load_cache(uintptr_t addr)
 {
+  cycle_increase(1);
   cchent* grp_queried_base = grp_addr(mem_index(addr));
   int i;
   for (i = 0; i < exp2(asso_width); i++)
   {
+    cycle_increase(1);
     if (grp_queried_base[i].valid_bit == INVALID)
     {
       cpy_cache(addr,grp_queried_base+i);
@@ -109,6 +118,7 @@ void load_cache(uintptr_t addr)
 }
 void dump_cache(uint32_t* cache_addr, cchent* cache_entry, uint32_t data, uint32_t wmask)
 {
+  cycle_increase(1);
 	assert(cache_addr >= (uint32_t*)cache_entry->data);
   *cache_addr = (*cache_addr & ~wmask) | (data & wmask);
 	cache_entry->write_bit = DIRTY;
