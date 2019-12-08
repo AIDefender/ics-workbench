@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 all_rate = {}
 for tot_size_w in range(6,30):
     for ass_w in range(0,8):
-        cmd = "./cachesim-64 microbench-test.log.bz2 -t {} -a {} 2>&1".format(tot_size_w,ass_w)
+        cmd = "../cachesim-64 microbench-test.log.bz2 -t {} -a {} 2>&1".format(tot_size_w,ass_w)
         if tot_size_w > ass_w + 6:
             try:
                 ops=[eval(i) for i in os.popen(cmd)][0]
